@@ -21,8 +21,8 @@ using std::ostream;
 /*!
  *  @class 	Worker worker.h
  * @brief 	Class Worker
- * @details	Os atributos estão dentro da Struct ID 
- * que contém o nome,cpf a função e a idade. 
+ * @details	Definição da classe Worker e suas classe filhas:
+ *  Veterinary e Caregiver. 
  */
 
 class Worker
