@@ -46,14 +46,14 @@ Worker::Worker(int id, string function,
                string name, string cpf, short int age,
                string bloodType, char factorRh, string Specialty)
 
-    : id(this->id = id),
-      function(this->function = function),
-      name(this->name = name),
-      cpf(this->cpf = cpf),
-      age(this->age = age),
-      bloodType(this->bloodType = bloodType),
-      factorRh(this->factorRh = factorRh),
-      Specialty(this->Specialty = Specialty)
+    : id(this->id),
+      function(this->function),
+      name(this->name),
+      cpf(this->cpf),
+      age(this->age),
+      bloodType(this->bloodType),
+      factorRh(this->factorRh),
+      Specialty(this->Specialty)
 
 {
 }
@@ -185,7 +185,6 @@ void Worker::setSpecialty(const string Specialty)
     this->Specialty = Specialty;
 }
 
-
 /*!
  * @details	Sobrecarga do operador de impressão (<<)
  * @param 	os Output stream
@@ -194,15 +193,15 @@ void Worker::setSpecialty(const string Specialty)
 ostream &operator<<(ostream &os, Worker &Person)
 {
 
-	os << "Identificador do funcionário: " << Person.id << endl;
-	os << "Função: " << Person.function << endl;
-	os << "Nome do funcionário: " << Person.name << endl;
-	os << "CPF do funcionário: " << Person.cpf << endl;
-	os << "Idade do funcionário: " << Person.age << endl;
-	os << "Tipo Sanguíneo: " << Person.bloodType << endl;
-	os << "Fator RH: " << Person.factorRh << endl;
-	os << "Especialidade: " << Person.Specialty << endl;
-	cout << endl;
+    os << "Identificador do funcionário: " << Person.id << endl;
+    os << "Função: " << Person.function << endl;
+    os << "Nome do funcionário: " << Person.name << endl;
+    os << "CPF do funcionário: " << Person.cpf << endl;
+    os << "Idade do funcionário: " << Person.age << endl;
+    os << "Tipo Sanguíneo: " << Person.bloodType << endl;
+    os << "Fator RH: " << Person.factorRh << endl;
+    os << "Especialidade: " << Person.Specialty << endl;
+    cout << endl;
 
-	return os;
+    return os;
 }
