@@ -50,16 +50,6 @@ Worker::Worker(int id, string function,
                string name, string cpf, short int age,
                string bloodType, char factorRh, string Specialty)
 
-<<<<<<< develop:src/worker.cpp
-    : id(id),
-      function(function),
-      name(name),
-      cpf(cpf),
-      age(age),
-      bloodType(bloodType),
-      factorRh(factorRh),
-      Specialty(Specialty)
-=======
     : id(this->id),
       function(this->function),
       name(this->name),
@@ -68,7 +58,6 @@ Worker::Worker(int id, string function,
       bloodType(this->bloodType),
       factorRh(this->factorRh),
       Specialty(this->Specialty)
->>>>>>> Remodelagem do Worker:src/bases/worker.cpp
 
 {
 }
@@ -180,28 +169,4 @@ void Worker::setFactorRh(const char factorRh)
 void Worker::setSpecialty(const string Specialty)
 {
     this->Specialty = Specialty;
-<<<<<<< develop:src/worker.cpp
-}
-
-/*!
- * @details	Sobrecarga do operador de impressão (<<)
- * @param 	os Output stream
- * @param 	Person  Objeto da classe Worker 
- */
-ostream &operator<<(ostream &os, Worker &Person)
-{
-
-    os << "Identificador do funcionário: " << Person.id << endl;
-    os << "Função: " << Person.function << endl;
-    os << "Nome do funcionário: " << Person.name << endl;
-    os << "CPF do funcionário: " << Person.cpf << endl;
-    os << "Idade do funcionário: " << Person.age << endl;
-    os << "Tipo Sanguíneo: " << Person.bloodType << endl;
-    os << "Fator RH: " << Person.factorRh << endl;
-    os << "Especialidade: " << Person.Specialty << endl;
-    cout << endl;
-
-    return os;
-=======
->>>>>>> Remodelagem do Worker:src/bases/worker.cpp
 }
