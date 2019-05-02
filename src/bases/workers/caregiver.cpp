@@ -22,7 +22,7 @@ using std::string;
 /*! @details	O construtor padrão é iniciado com valores defaults */
 
 Caregiver::Caregiver()
-	: Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0')
+	: Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
 
 {
 }
