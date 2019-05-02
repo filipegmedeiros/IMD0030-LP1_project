@@ -1,9 +1,12 @@
 /*!
  * @file	worker.cpp
- * @brief	 Implementação do header da classe Worker
+ * @brief	Implementação do header da classe worker
  * @author	Filipe Medeiros
- * @date 28/04/2019
+ * @date	02/05/2019
+ * @since	28/04/2019
  */
+
+//! Includes and Usings
 
 #include <worker.h>
 
@@ -14,9 +17,9 @@ using std::endl;
 #include <string>
 using std::string;
 
-//!Construtores
+//!Construtor
 
-/*! @details O construtor padrão é iniciado com valores defaults */
+/*!	@details	O construtor padrão é iniciado com valores defaults */
 
 Worker::Worker()
     : id(0),
@@ -31,21 +34,23 @@ Worker::Worker()
 }
 
 /*!
- * @details Este construtor recebe argumentos e atributi a classe Worker.
- *    @param id Identificador do funcionário.
- *    @param function Função do funcionário.
- *    @param name Nome do funcionário.
- *    @param cpf CPF do funcionário.
- *    @param age Idade do funcionário.
- *    @param bloodType Tipo sanguíneo do funcionário.
- *    @param factorRh Fator RH do funcionário.
- *    @param Specialty Especialidade do funcionário. 
+ *	@details	Este construtor recebe argumentos e atributi a classe Worker.
+ *
+ *	@param	id			Identificador do funcionário.
+ *	@param	function	Função do funcionário.
+ *	@param	name		Nome do funcionário.
+ *	@param	cpf			CPF do funcionário.
+ *	@param	age			Idade do funcionário.
+ *	@param	bloodType	Tipo sanguíneo do funcionário.
+ *	@param	factorRh	Fator RH do funcionário.
+ *	@param	Specialty	Especialidade do funcionário. 
  */
 
 Worker::Worker(int id, string function,
                string name, string cpf, short int age,
                string bloodType, char factorRh, string Specialty)
 
+<<<<<<< develop:src/worker.cpp
     : id(id),
       function(function),
       name(name),
@@ -54,82 +59,74 @@ Worker::Worker(int id, string function,
       bloodType(bloodType),
       factorRh(factorRh),
       Specialty(Specialty)
+=======
+    : id(this->id),
+      function(this->function),
+      name(this->name),
+      cpf(this->cpf),
+      age(this->age),
+      bloodType(this->bloodType),
+      factorRh(this->factorRh),
+      Specialty(this->Specialty)
+>>>>>>> Remodelagem do Worker:src/bases/worker.cpp
 
 {
 }
 
-/*! @details	Construtor padrão da classe  Veterinary*/
-Veterinary::Veterinary()
-{
-}
 
-/*! @details	Construtor padrão da classe Caregiver*/
-Caregiver::Caregiver()
-{
-}
+//! Destrutor
 
-//! Destrutores
-
-/*! @details	Destrutor padrão da classe Worker*/
+/*!	@details	Destrutor padrão da classe Worker*/
 Worker::~Worker()
 {
 }
 
-/*! @details	Destrutor padrão da classe Veterinary*/
-Veterinary::~Veterinary()
-{
-}
-
-/*! @details	Destrutor padrão da classe Caregiver*/
-Caregiver::~Caregiver()
-{
-}
 
 //! Metodos Getters
 
-/*! @return Identificador do funcionário */
+/*!	@return	Identificador do funcionário */
 int Worker::getId()
 {
     return id;
 }
 
-/*! @return a função do funcionário */
+/*!	@return	a função do funcionário */
 string Worker::getFunction()
 {
     return function;
 }
 
-/*! @return Nome do funcionário */
+/*!	@return	Nome do funcionário */
 string Worker::getName()
 {
     return name;
 }
 
-/*! @return Nome do funcionário */
+/*!	@return	Nome do funcionário */
 string Worker::getCpf()
 {
     return cpf;
 }
 
-/*! @return a idade funcionário */
+/*!	@return	a idade funcionário */
 short int Worker::getAge()
 {
     return age;
 }
 
-/*! @return o tipo do sangue do funcionário */
+/*!	@return	o tipo do sangue do funcionário */
 string Worker::getBloodType()
 {
     return bloodType;
 }
 
-/*! @return o favor Rh do funcionário */
+/*!	@return	o favor Rh do funcionário */
 char Worker::getFactorRh()
 {
     return factorRh;
 }
 
-/*! @return Especialidade do funcionário */
+/*!	@return	Especialidade do funcionário */
 string Worker::getSpecialty()
 {
     return Specialty;
@@ -137,52 +134,53 @@ string Worker::getSpecialty()
 
 //! Metodos Setters
 
-/*! @param id Identificador do funcionário */
+/*!	@param	id		Identificador do funcionário */
 void Worker::setId(const int id)
 {
     this->id = id;
 }
 
-/*!  @param function Função do funcionário. */
+/*!	@param	function	Função do funcionário. */
 void Worker::setFunction(const string function)
 {
     this->function = function;
 }
 
-/*!  @param name Nome do funcionário. */
+/*!	@param	name	Nome do funcionário. */
 void Worker::setName(const string name)
 {
     this->name = name;
 }
 
-/*!  @param cpf CPF do funcionário. */
+/*!	@param	cpf		CPF do funcionário. */
 void Worker::setCpf(const string cpf)
 {
     this->cpf = cpf;
 }
 
-/*!  @param age Idade do funcionário. */
+/*!	@param	age		Idade do funcionário. */
 void Worker::setAge(const short int age)
 {
     this->age = age;
 }
 
-/*!  @param bloodType Tipo sanguíneo do funcionário. */
+/*!	@param	bloodType	Tipo sanguíneo do funcionário. */
 void Worker::setBloodType(const string bloodType)
 {
     this->bloodType = bloodType;
 }
 
-/*!  @param factorRh Fator RH do funcionário. */
+/*!	@param	factorRh	Fator RH do funcionário. */
 void Worker::setFactorRh(const char factorRh)
 {
     this->factorRh = factorRh;
 }
 
-/*!  @param Specialty Especialidade do funcionário. */
+/*!	@param	Specialty	Especialidade do funcionário. */
 void Worker::setSpecialty(const string Specialty)
 {
     this->Specialty = Specialty;
+<<<<<<< develop:src/worker.cpp
 }
 
 /*!
@@ -204,4 +202,6 @@ ostream &operator<<(ostream &os, Worker &Person)
     cout << endl;
 
     return os;
+=======
+>>>>>>> Remodelagem do Worker:src/bases/worker.cpp
 }
