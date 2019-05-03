@@ -2,11 +2,11 @@
 #define __EXOTIC_H__
 
 /*!
- * @file	exotic.h
- * @brief	Classe Exotic
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	02/05/2019
+ *	@file			exotic.h
+ *	@brief		Classe Exotic
+ *	@author		Filipe Medeiros
+ *	@date			02/05/2019
+ *	@since		02/05/2019
  */
 
 //! Includes and Usings
@@ -20,8 +20,8 @@ using std::ostream;
 
 class Exotic
 {
-  protected:
-  public:
+protected:
+public:
 };
 
 #endif

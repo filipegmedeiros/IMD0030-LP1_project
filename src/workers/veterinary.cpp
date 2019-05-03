@@ -1,9 +1,9 @@
 /*!
- * @file		veterinary.cpp
- * @brief		Implementação do header da classe Veterinary
- * @author	Filipe Medeiros
- * @date		02/05/2019
- * @since		02/05/2019
+ *	@file		veterinary.cpp
+ *	@brief		Implementação do header da classe Veterinary
+ *	@author	Filipe Medeiros
+ *	@date		02/05/2019
+ *	@since		02/05/2019
  */
 
 //! Includes and Usings

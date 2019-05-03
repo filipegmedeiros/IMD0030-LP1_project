@@ -2,11 +2,11 @@
 #define __MANIPULATOR_H__
 
 /*!
- * @file	manipulator.h
- * @brief	Classe Manipulator
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	02/05/2019
+ *	@file		manipulator.h
+ *	@brief	Classe Manipulator
+ *	@author	Filipe Medeiros
+ *	@date		02/05/2019
+ *	@since	02/05/2019
  */
 
 //! Includes and Usings
@@ -20,8 +20,8 @@ using std::ostream;
 
 class Manipulator
 {
-  protected:
-  public:
+protected:
+public:
 };
 
 #endif

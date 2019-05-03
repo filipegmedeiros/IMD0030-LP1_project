@@ -2,11 +2,11 @@
 #define __ANIMAL_H__
 
 /*!
- * @file	worker.h
- * @brief	Classe Worker
- * @author	Gabriel Medeiros, Filipe Medeiros
- * @date	02/05/2019
- * @since	28/04/2019
+ *	@file	animal.h
+ *	@brief	Classe Animal
+ *	@author	Gabriel Medeiros, Filipe Medeiros
+ *	@date	02/05/2019
+ *	@since	28/04/2019
  */
 
 //! Includes and Usings
