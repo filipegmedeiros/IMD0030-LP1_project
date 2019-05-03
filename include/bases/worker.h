@@ -2,11 +2,11 @@
 #define __WORKER_H__
 
 /*!
- * @file	worker.h
- * @brief	Classe Worker
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	25/04/2019
+ *	@file	worker.h
+ *	@brief	Classe Worker
+ *	@author	Filipe Medeiros
+ *	@date	02/05/2019
+ *	@since	25/04/2019
  */
 
 //! Includes and Usings
@@ -17,13 +17,10 @@ using std::string;
 #include <iostream>
 using std::ostream;
 
-
-
-
 /*!
- *  @class	Worker worker.h
- * @brief	Class Worker
- * @details	Definição da classe Worker e suas classe filhas:
+ *	@class		Worker worker.h
+ *	@brief		Class Worker
+ *	@details	Definição da classe Worker e suas classe filhas:
  *  Veterinary e Caregiver. 
  */
 
@@ -64,8 +61,6 @@ class Worker
 	void setBloodType(const string);
 	void setFactorRh(const char);
 	void setSpecialty(const string);
-
-
 };
 
 #endif

@@ -1,9 +1,9 @@
 /*!
- * @file	worker.cpp
- * @brief	Implementação do header da classe worker
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	28/04/2019
+ *	@file	worker.cpp
+ *	@brief	Implementação do header da classe worker
+ *	@author	Filipe Medeiros
+ *	@date	02/05/2019
+ *	@since	28/04/2019
  */
 
 //! Includes and Usings

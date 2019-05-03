@@ -1,9 +1,9 @@
 /*!
- * @file	animal.cpp
- * @brief	Implementação do header da classe animal
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	02/05/2019
+ *	@file	animal.cpp
+ *	@brief	Implementação do header da classe animal
+ *	@author	Filipe Medeiros
+ *	@date	02/05/2019
+ *	@since	02/05/2019
  */
 
 #include <animal.h>

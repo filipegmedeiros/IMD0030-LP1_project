@@ -2,11 +2,11 @@
 #define __CAREGIVER_H__
 
 /*!
- * @file	caregiver.h
- * @brief	Classe Caregiver
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	02/05/2019
+ *	@file		caregiver.h
+ *	@brief	Classe Caregiver
+ *	@author	Filipe Medeiros
+ *	@date		02/05/2019
+ *	@since	02/05/2019
  */
 
 //! Includes and Usings
@@ -21,10 +21,10 @@ using std::istream;
 using std::ostream;
 
 /*!
- * @class	Caregiver caregiver.h
- * @brief	Class Caregiver
- * @details	Os atributos do cuidador/tratador são herdados
- * da classe Workers.
+ *	@class		Caregiver caregiver.h
+ *	@brief		Class Caregiver
+ *	@details	Os atributos do cuidador/tratador são herdados
+ *	da classe Workers.
  */
 class Caregiver : public Worker
 {

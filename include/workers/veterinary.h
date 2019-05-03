@@ -2,11 +2,11 @@
 #define __VETERINARY_H__
 
 /*!
- * @file	veterinary.h
- * @brief	Classe Veterinary
- * @author	Filipe Medeiros
- * @date	02/05/2019
- * @since	02/05/2019
+ *	@file		veterinary.h
+ *	@brief	Classe Veterinary
+ *	@author	Filipe Medeiros
+ *	@date		02/05/2019
+ *	@since	02/05/2019
  */
 
 //! Includes and Usings
@@ -21,10 +21,10 @@ using std::istream;
 using std::ostream;
 
 /*!
- *  @class	Veterinary worker.h
- * @brief	Template Class Veterinary
- * @details	Os atributos do funcionário são herdados
- * da classe Workers.
+ *	@class		Veterinary worker.h
+ *	@brief		Template Class Veterinary
+ *	@details	Os atributos do funcionário são herdados
+ *	da classe Workers.
  */
 
 class Veterinary : public Worker
