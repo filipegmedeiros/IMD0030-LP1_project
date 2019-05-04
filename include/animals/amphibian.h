@@ -3,7 +3,7 @@
 
 /*!
  *	@file		amphibian.h
- *	@brief	Classe Anfibio
+ *	@brief	Class Amphibian
  *	@author	Sara Santana
  *	@date		02/05/2019
  *	@since	02/05/2019
@@ -42,8 +42,8 @@ public:
   string getLastSeed();
 
   //! Metodos Setters
-  void getTotalSeed(int);
-  void getLastSeed(string);
+  void setTotalSeed(int);
+  void setLastSeed(string);
 };
 
 #endif
