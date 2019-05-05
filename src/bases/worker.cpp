@@ -20,7 +20,6 @@ using std::string;
 //!Construtor
 
 /*!	@details	O construtor padrão é iniciado com valores defaults */
-
 Worker::Worker()
     : id(0),
       function("Unemployed"),
@@ -45,7 +44,6 @@ Worker::Worker()
  *	@param	factorRh	Fator RH do funcionário.
  *	@param	Specialty	Especialidade do funcionário. 
  */
-
 Worker::Worker(int id, string function,
                string name, string cpf, short int age,
                string bloodType, char factorRh, string Specialty)

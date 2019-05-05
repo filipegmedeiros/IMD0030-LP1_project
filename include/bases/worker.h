@@ -38,11 +38,13 @@ class Worker
 
   public:
 	//! Construtor e Destrutor
+	
 	Worker();
 	Worker(int, string, string, string, short int, string, char, string);
 	~Worker();
 
 	//! Metodos Getters
+
 	int getId();
 	string getFunction();
 	string getName();
@@ -53,6 +55,7 @@ class Worker
 	string getSpecialty();
 
 	//! Metodos Setters
+
 	void setId(const int);
 	void setFunction(const string);
 	void setName(const string);

@@ -25,7 +25,6 @@ using std::ostream;
  *	@brief	Class Amphibian
  *	@details
  */
-
 class Amphibian : public Animal
 {
 protected:

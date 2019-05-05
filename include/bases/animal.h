@@ -21,11 +21,10 @@ using std::istream;
 using std::ostream;
 
 /*!
- *  @class		Animal animal.h
- *  @brief		Class Animal
- *  @details	Definição da classe Animal
+ *  @class	Animal animal.h
+ *  @brief	Class Animal
+ *  @details Definição da classe Animal
  */
-
 class Animal
 {
 
@@ -42,11 +41,13 @@ class Animal
 	Caregiver *caregiver;
 
   public:
-	//! rutor e Destrutor
+	//! Construtor e Destrutor
+
 	Animal(int, string, string, char, double, string, string, Veterinary *, Caregiver *);
 	~Animal();
 
 	//! Metodos Getters
+
 	int getId();
 	string getAnimalClass();
 	string getScientificName();
@@ -59,6 +60,7 @@ class Animal
 	Caregiver *getCaregiver();
 
 	//! Metodos Setters
+	
 	void setId(int);
 	void setAnimalClass(string);
 	void setBaptismalName(string);

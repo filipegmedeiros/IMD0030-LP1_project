@@ -25,7 +25,6 @@ using std::ostream;
  *	@brief	Class Mammal
  *	@details
  */
-
 class Mammal: public Animal
 {
 protected:
@@ -33,13 +32,16 @@ protected:
 
 public:
   //! Construtor e Destrutor
+
   Mammal();
   ~Mammal();
 
   //! Metodos Getters
+
   string getFurColor();
 
   //! Metodos Setters
+  
   void setFurColor(string);
 };
 

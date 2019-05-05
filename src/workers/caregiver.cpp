@@ -20,7 +20,6 @@ using std::string;
 //!Construtor
 
 /*! @details	O construtor padrão é iniciado com valores defaults */
-
 Caregiver::Caregiver()
 	: Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
 
@@ -39,7 +38,6 @@ Caregiver::Caregiver()
  *	@param	factorRh	Fator RH do funcionário.
  *	@param	Specialty	Especialidade do funcionário. 
  */
-
 Caregiver::Caregiver(int id, string function,
 					 string name, string cpf, short int age,
 					 string bloodType, char factorRh, string Specialty)
@@ -51,10 +49,18 @@ Caregiver::Caregiver(int id, string function,
 }
 
 //!Destrutor
+
+/*!	@details	Destrutor padrão da classe Caregiver*/
 Caregiver::~Caregiver()
 {
 }
 
+
+/*!
+ * @details	Sobrecarga do operador de impressão <<
+ * @param 	os Output stream
+ * @param   Person Classe Caregiver
+ */
 ostream &operator<<(ostream &os, Caregiver &Person)
 {
 	os << "Identificador do funcionário: " << Person.id << endl;
