@@ -1,9 +1,9 @@
 /*!
  *	@file		veterinary.cpp
- *	@brief		Implementação do header da classe Veterinary
+ *	@brief	Implementação do header da classe Veterinary
  *	@author	Filipe Medeiros
  *	@date		02/05/2019
- *	@since		02/05/2019
+ *	@since	02/05/2019
  */
 
 //! Includes and Usings
@@ -20,7 +20,6 @@ using std::string;
 //!Construtor
 
 /*! @details O construtor padrão é iniciado com valores defaults */
-
 Veterinary::Veterinary()
     : Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
 
@@ -39,7 +38,6 @@ Veterinary::Veterinary()
  *	@param	factorRh	Fator RH do funcionário.
  *	@param	Specialty	Especialidade do funcionário. 
  */
-
 Veterinary::Veterinary(int id, string function,
                        string name, string cpf, short int age,
                        string bloodType, char factorRh, string Specialty)
@@ -51,10 +49,17 @@ Veterinary::Veterinary(int id, string function,
 }
 
 //!Destrutor
+
+/*!	@details	Destrutor padrão da classe Veterinary*/
 Veterinary::~Veterinary()
 {
 }
 
+/*!
+ * @details	Sobrecarga do operador de impressão <<
+ * @param 	os Output stream
+ * @param   Person Classe Veterinary
+ */
 ostream &operator<<(ostream &os, Veterinary &Person)
 {
 

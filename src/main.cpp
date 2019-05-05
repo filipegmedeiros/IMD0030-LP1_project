@@ -19,6 +19,14 @@ using std::endl;
 #include <string>
 using std::string;
 
+
+/*!
+ * @file	main.cpp
+ * @brief testes implementações do PetFera
+ * @author	Filipe Medeiros
+ * @since	05/04/2019
+ * @date	05/04/2019
+ */
 int main(void)
 {
   Veterinary *Vet = new Veterinary(1, "Veterinario", "Jon", "000.000.000-00", 10, "AB", '-', "Leões");

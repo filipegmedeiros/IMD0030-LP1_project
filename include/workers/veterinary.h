@@ -21,12 +21,11 @@ using std::istream;
 using std::ostream;
 
 /*!
- *	@class		Veterinary worker.h
- *	@brief		Template Class Veterinary
- *	@details	Os atributos do funcionário são herdados
+ *	@class		Veterinary veterinary.h
+ *	@brief		Class veterinary
+ *	@details	Os atributos do cuidador/tratador são herdados
  *	da classe Workers.
  */
-
 class Veterinary : public Worker
 {
   public:

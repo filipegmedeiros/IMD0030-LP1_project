@@ -25,7 +25,6 @@ using std::ostream;
  *	@brief	Class Reptile
  *	@details
  */
-
 class Reptile: public Animal
 {
 protected:
@@ -34,14 +33,17 @@ protected:
 
 public:
   //! Construtor e Destrutor
+
   Reptile();
   ~Reptile();
 
   //! Metodos Getters
+
   bool getIsItPoisonous();
   string getPoisonType();
 
   //! Metodos Setters
+  
   void setIsItPoisonous(bool);
   void setPoisonType(string);
 };

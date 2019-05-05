@@ -31,7 +31,6 @@ using std::string;
  *	@param	Veterinary		Veterinário do animal.
  *	@param	Caregiver		Tratador do animal.
  */
-
 Animal::Animal(int id, string animalClass, string scientificName,
                char sex, double size, string diet, string baptismalName,
                Veterinary *veterinary, Caregiver *caregiver)
@@ -161,9 +160,10 @@ void Animal::setCaregiver(Caregiver *caregiver)
     this->caregiver = caregiver;
 }
 
-/**
- * @details	Sobrecarga do operador de impressão (<<)
+/*!
+ * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
+ * @param   Animal Classe Animal
  */
 ostream &operator<<(ostream &os, Animal &Animal)
 {
