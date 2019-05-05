@@ -2,10 +2,10 @@
 #define __REPTILE_H_
 
 /*!
- *	@file	reptile.h
+ *	@file		reptile.h
  *	@brief	Class Reptile
  *	@author	Sara Santana
- *	@date	03/05/2019
+ *	@date		03/05/2019
  *	@since	03/05/2019
  */
 

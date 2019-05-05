@@ -2,10 +2,10 @@
 #define __BIRD_H_
 
 /*!
- *	@file	bird.h
+ *	@file		bird.h
  *	@brief	Class Bird
  *	@author	Sara Santana
- *	@date	03/05/2019
+ *	@date		03/05/2019
  *	@since	03/05/2019
  */
 

@@ -2,10 +2,10 @@
 #define __MAMMAL_H_
 
 /*!
- *	@file	mammal.h
+ *	@file		mammal.h
  *	@brief	Class Mammal
  *	@author	Sara Santana
- *	@date	03/05/2019
+ *	@date		03/05/2019
  *	@since	03/05/2019
  */
 
