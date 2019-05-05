@@ -28,6 +28,7 @@ using std::ostream;
 
 class Animal
 {
+
   protected:
 	int id;
 	string animalClass;
@@ -41,8 +42,8 @@ class Animal
 	Caregiver *caregiver;
 
   public:
-	//! Construtor e Destrutor
-	Animal::Animal(int, string, string, char, double, string, string, Veterinary *, Caregiver *);
+	//! rutor e Destrutor
+	Animal(int, string, string, char, double, string, string, Veterinary *, Caregiver *);
 	~Animal();
 
 	//! Metodos Getters
@@ -58,17 +59,17 @@ class Animal
 	Caregiver *getCaregiver();
 
 	//! Metodos Setters
-	void setId(const int);
-	void setAnimalClass(const string);
-	void setBaptismalName(const string);
-	void setSex(const char);
-	void setSize(const double);
-	void setDiet(const string);
-
-	void setBaptismalName(const string);
+	void setId(int);
+	void setAnimalClass(string);
+	void setBaptismalName(string);
+	void setSex(char);
+	void setSize(double);
+	void setDiet(string);
 
 	void setVeterinary(Veterinary *);
 	void setCaregiver(Caregiver *);
+
+	friend ostream &operator<<(ostream &, Animal &);
 };
 
 #endif
