@@ -27,7 +27,7 @@ Worker::Worker()
       name(""),
       cpf("000.000.000-00"),
       age(0),
-      bloodType("A"),
+      bloodType(""),
       factorRh('\0')
 
 {
@@ -50,14 +50,14 @@ Worker::Worker(int id, string function,
                string name, string cpf, short int age,
                string bloodType, char factorRh, string Specialty)
 
-    : id(this->id),
-      function(this->function),
-      name(this->name),
-      cpf(this->cpf),
-      age(this->age),
-      bloodType(this->bloodType),
-      factorRh(this->factorRh),
-      Specialty(this->Specialty)
+    : id(id),
+      function(function),
+      name(name),
+      cpf(cpf),
+      age(age),
+      bloodType(bloodType),
+      factorRh(factorRh),
+      Specialty(Specialty)
 
 {
 }

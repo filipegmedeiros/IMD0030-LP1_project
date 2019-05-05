@@ -44,8 +44,8 @@ Veterinary::Veterinary(int id, string function,
                        string name, string cpf, short int age,
                        string bloodType, char factorRh, string Specialty)
 
-    : Worker(this->id, this->function, this->name, this->cpf, this->age, this->bloodType,
-             this->factorRh, this->Specialty)
+    : Worker(id, function, name, cpf, age, bloodType,
+             factorRh, Specialty)
 
 {
 }

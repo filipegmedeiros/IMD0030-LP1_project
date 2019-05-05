@@ -36,15 +36,15 @@ Animal::Animal(int id, string animalClass, string scientificName,
                char sex, double size, string diet, string baptismalName,
                Veterinary *veterinary, Caregiver *caregiver)
 
-    : id(this->id),
-      animalClass(this->animalClass),
-      scientificName(this->scientificName),
-      sex(this->sex),
-      size(this->size),
-      diet(this->diet),
-      baptismalName(this->baptismalName),
-      veterinary(this->veterinary),
-      caregiver(this->caregiver)
+    : id(id),
+      animalClass(animalClass),
+      scientificName(scientificName),
+      sex(sex),
+      size(size),
+      diet(diet),
+      baptismalName(baptismalName),
+      veterinary(veterinary),
+      caregiver(caregiver)
 {
 }
 
@@ -159,4 +159,22 @@ void Animal::setVeterinary(Veterinary *veterinary)
 void Animal::setCaregiver(Caregiver *caregiver)
 {
     this->caregiver = caregiver;
+}
+
+/**
+ * @details	Sobrecarga do operador de impressão (<<)
+ * @param 	os Output stream
+ */
+ostream &operator<<(ostream &os, Animal &Animal)
+{
+    os << "ID do animal: " << Animal.id << endl;
+    os << "Classe do animal: " << Animal.animalClass << endl;
+    os << "Nome do animal: " << Animal.baptismalName << endl;
+    os << "Nome cientifico do animal: " << Animal.scientificName << endl;
+    os << "Sexo do animal: " << Animal.sex << endl;
+    os << "Dieta do animal: " << Animal.diet << endl;
+    os << "Veterinário: " << Animal.veterinary->getName() << endl;
+    os << "Tratador: " << Animal.caregiver->getName() << endl;
+
+    return os;
 }
