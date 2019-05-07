@@ -16,6 +16,7 @@ using std::string;
 
 #include <iostream>
 using std::ostream;
+using std::istream;
 
 /*!
  *	@class		Worker worker.h
@@ -27,6 +28,7 @@ using std::ostream;
 class Worker
 {
   protected:
+	virtual void print(ostream &);  
 	int id;
 	string function;
 	string name;
@@ -64,6 +66,11 @@ class Worker
 	void setBloodType(const string);
 	void setFactorRh(const char);
 	void setSpecialty(const string);
+
+    //! Sobrecargas dos operadores
+    friend istream &operator>>(istream &, Worker &);
+    friend ostream &operator<<(ostream &, Worker &);
+
 };
 
 #endif

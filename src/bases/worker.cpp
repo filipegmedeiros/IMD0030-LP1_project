@@ -60,14 +60,12 @@ Worker::Worker(int id, string function,
 {
 }
 
-
 //! Destrutor
 
 /*!	@details	Destrutor padrão da classe Worker*/
 Worker::~Worker()
 {
 }
-
 
 //! Metodos Getters
 
@@ -167,4 +165,27 @@ void Worker::setFactorRh(const char factorRh)
 void Worker::setSpecialty(const string Specialty)
 {
     this->Specialty = Specialty;
+}
+
+void Worker::print(ostream &os)
+{
+    os << "Identificador do funcionário: " << this->id << endl;
+    os << "Função: " << this->function << endl;
+    os << "Nome do funcionário: " << this->name << endl;
+    os << "CPF do funcionário: " << this->cpf << endl;
+    os << "Idade do funcionário: " << this->age << endl;
+    os << "Tipo Sanguíneo: " << this->bloodType << endl;
+    os << "Fator RH: " << this->factorRh << endl;
+    os << "Especialidade: " << this->Specialty << endl;
+}
+
+/*!
+ * @details	Sobrecarga do operador de impressão <<
+ * @param 	os Output stream
+ * @param   Person Classe Veterinary
+ */
+ostream &operator<<(ostream &os, Worker &Person)
+{
+    Person.print(os);
+    return os;
 }

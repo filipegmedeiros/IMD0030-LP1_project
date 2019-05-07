@@ -29,6 +29,7 @@ class Animal
 {
 
   protected:
+	virtual void print(ostream &);
 	int id;
 	string animalClass;
 	string scientificName;
