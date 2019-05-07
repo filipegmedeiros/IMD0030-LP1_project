@@ -6,7 +6,7 @@
  *	@since	02/05/2019
  */
 
-#include <animal.h>
+#include "animal.h"
 
 #include <iostream>
 using std::cout;
@@ -160,21 +160,26 @@ void Animal::setCaregiver(Caregiver *caregiver)
     this->caregiver = caregiver;
 }
 
+void Animal::print(ostream &os)
+{
+    os << "ID do animal: " << this->id << endl;
+    os << "Classe do animal: " << this->animalClass << endl;
+    os << "Nome do animal: " << this->baptismalName << endl;
+    os << "Nome cientifico do animal: " << this->scientificName << endl;
+    os << "Sexo do animal: " << this->sex << endl;
+    os << "Dieta do animal: " << this->diet << endl;
+    os << "Veterinário: " << this->veterinary->getName() << endl;
+    os << "Tratador: " << this->caregiver->getName() << endl;
+}
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
  * @param   Animal Classe Animal
  */
-ostream &operator<<(ostream &os, Animal &Animal)
+ostream &operator<<(ostream &os, Animal &animal)
 {
-    os << "ID do animal: " << Animal.id << endl;
-    os << "Classe do animal: " << Animal.animalClass << endl;
-    os << "Nome do animal: " << Animal.baptismalName << endl;
-    os << "Nome cientifico do animal: " << Animal.scientificName << endl;
-    os << "Sexo do animal: " << Animal.sex << endl;
-    os << "Dieta do animal: " << Animal.diet << endl;
-    os << "Veterinário: " << Animal.veterinary->getName() << endl;
-    os << "Tratador: " << Animal.caregiver->getName() << endl;
+    animal.print(os);
 
     return os;
 }
