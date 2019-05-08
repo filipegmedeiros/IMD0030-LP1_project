@@ -28,15 +28,27 @@ using std::ostream;
  */
 class Caregiver : public Worker
 {
-  public:
-    //! Construtor e Destrutor
-    Caregiver();
-    Caregiver(int, string, string, string, short int, string, char, string);
-    ~Caregiver();
 
-    //! Sobrecargas dos operadores
-    friend istream &operator>>(istream &, Caregiver &);
-    friend ostream &operator<<(ostream &, Caregiver &);
+private:
+  int securityLevel;
+
+public:
+  //! Construtor e Destrutor
+  Caregiver();
+  Caregiver(int, string, string, string, short int, string, char, string, int);
+  ~Caregiver();
+
+  //! Metodos Getters
+
+  int getSecurityLevel();
+
+  //! Metodos Setters
+
+  void setSecurityLevel(int);
+
+  //! Sobrecargas dos operadores
+  friend istream &operator>>(istream &, Caregiver &);
+  friend ostream &operator<<(ostream &, Caregiver &);
 };
 
 #endif
