@@ -46,7 +46,7 @@ Worker::Worker()
  */
 Worker::Worker(int id, string function,
                string name, string cpf, short int age,
-               string bloodType, char factorRh, string Specialty)
+               string bloodType, char factorRh, string specialty)
 
     : id(id),
       function(function),
@@ -55,7 +55,7 @@ Worker::Worker(int id, string function,
       age(age),
       bloodType(bloodType),
       factorRh(factorRh),
-      Specialty(Specialty)
+      specialty(specialty)
 
 {
 }
@@ -114,7 +114,7 @@ char Worker::getFactorRh()
 /*!	@return	Especialidade do funcionário */
 string Worker::getSpecialty()
 {
-    return Specialty;
+    return specialty;
 }
 
 //! Metodos Setters
@@ -164,7 +164,7 @@ void Worker::setFactorRh(const char factorRh)
 /*!	@param	Specialty	Especialidade do funcionário. */
 void Worker::setSpecialty(const string Specialty)
 {
-    this->Specialty = Specialty;
+    this->specialty = Specialty;
 }
 
 void Worker::print(ostream &os)
@@ -176,7 +176,7 @@ void Worker::print(ostream &os)
     os << "Idade do funcionário: " << this->age << endl;
     os << "Tipo Sanguíneo: " << this->bloodType << endl;
     os << "Fator RH: " << this->factorRh << endl;
-    os << "Especialidade: " << this->Specialty << endl;
+    os << "Especialidade: " << this->specialty << endl;
 }
 
 /*!
