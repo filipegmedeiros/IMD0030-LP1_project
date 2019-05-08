@@ -160,6 +160,11 @@ void Animal::setCaregiver(Caregiver *caregiver)
     this->caregiver = caregiver;
 }
 
+/*!
+ * @details	Função Print para fazer evitar o problema da sobrecarga não ser herdavel.
+ * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
+ * @param 	os Output stream
+ */
 void Animal::print(ostream &os)
 {
     os << "ID do animal: " << this->id << endl;

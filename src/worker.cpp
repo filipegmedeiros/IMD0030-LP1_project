@@ -167,6 +167,11 @@ void Worker::setSpecialty(const string Specialty)
     this->specialty = Specialty;
 }
 
+/*!
+ * @details	Função Print para fazer evitar o problema da sobrecarga não ser herdavel.
+ * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
+ * @param 	os Output stream
+ */
 void Worker::print(ostream &os)
 {
     os << "Identificador do funcionário: " << this->id << endl;
