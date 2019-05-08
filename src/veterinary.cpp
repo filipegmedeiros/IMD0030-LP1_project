@@ -24,6 +24,7 @@ Veterinary::Veterinary()
     : Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
 
 {
+  this->crmv = "";
 }
 
 /*!
@@ -36,14 +37,16 @@ Veterinary::Veterinary()
  *	@param	age			Idade do funcionário.
  *	@param	bloodType	Tipo sanguíneo do funcionário.
  *	@param	factorRh	Fator RH do funcionário.
- *	@param	Specialty	Especialidade do funcionário. 
+ *	@param	specialty	Especialidade do funcionário. 
+ *  @param  crmv      Número de Identificação CRMV.
  */
 Veterinary::Veterinary(int id, string function,
                        string name, string cpf, short int age,
-                       string bloodType, char factorRh, string Specialty)
+                       string bloodType, char factorRh, string specialty, string crmv)
 
     : Worker(id, function, name, cpf, age, bloodType,
-             factorRh, Specialty)
+             factorRh, specialty),
+      crmv(crmv)
 
 {
 }
@@ -55,6 +58,22 @@ Veterinary::~Veterinary()
 {
 }
 
+//! Metodos Getters
+
+/*!	@return	Identificador do CRMV */
+string Veterinary::getCrmv()
+{
+  return crmv;
+}
+
+//! Metodos Setters
+
+/*!	@param	crmv		 Número de Identificação CRMV */
+void Veterinary::setCrmv(string crmv)
+{
+  this->crmv = crmv;
+}
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
@@ -62,16 +81,7 @@ Veterinary::~Veterinary()
  */
 ostream &operator<<(ostream &os, Veterinary &Person)
 {
-
-  os << "Identificador do funcionário: " << Person.id << endl;
-  os << "Função: " << Person.function << endl;
-  os << "Nome do funcionário: " << Person.name << endl;
-  os << "CPF do funcionário: " << Person.cpf << endl;
-  os << "Idade do funcionário: " << Person.age << endl;
-  os << "Tipo Sanguíneo: " << Person.bloodType << endl;
-  os << "Fator RH: " << Person.factorRh << endl;
-  os << "Especialidade: " << Person.Specialty << endl;
-  cout << endl;
-
+  Person.print(os);
+  os << "Código do CRMV: " << Person.crmv << endl;
   return os;
 }

@@ -28,15 +28,26 @@ using std::ostream;
  */
 class Veterinary : public Worker
 {
-  public:
-    //! Construtor e Destrutor
-    Veterinary();
-    Veterinary(int, string, string, string, short int, string, char, string);
-    ~Veterinary();
+private:
+  string crmv;
 
-    //! Sobrecargas dos operadores
-    friend istream &operator>>(istream &, Veterinary &);
-    friend ostream &operator<<(ostream &, Veterinary &);
+public:
+  //! Construtor e Destrutor
+  Veterinary();
+  Veterinary(int, string, string, string, short int, string, char, string, string);
+  ~Veterinary();
+
+  //! Metodos Getters
+
+  string getCrmv();
+
+  //! Metodos Setters
+
+  void setCrmv(string);
+
+  //! Sobrecargas dos operadores
+  friend istream &operator>>(istream &, Veterinary &);
+  friend ostream &operator<<(ostream &, Veterinary &);
 };
 
 #endif
