@@ -36,7 +36,7 @@ class Worker
 	short int age;
 	string bloodType;
 	char factorRh;
-	string Specialty;
+	string specialty;
 
   public:
 	//! Construtor e Destrutor

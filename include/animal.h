@@ -28,7 +28,7 @@ using std::ostream;
 class Animal
 {
 
-  protected:
+protected:
 	virtual void print(ostream &);
 	int id;
 	string animalClass;
@@ -41,7 +41,7 @@ class Animal
 	Veterinary *veterinary;
 	Caregiver *caregiver;
 
-  public:
+public:
 	//! Construtor e Destrutor
 
 	Animal(int, string, string, char, double, string, string, Veterinary *, Caregiver *);
@@ -61,7 +61,7 @@ class Animal
 	Caregiver *getCaregiver();
 
 	//! Metodos Setters
-	
+
 	void setId(int);
 	void setAnimalClass(string);
 	void setBaptismalName(string);

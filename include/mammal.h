@@ -25,7 +25,7 @@ using std::ostream;
  *	@brief	Class Mammal
  *	@details
  */
-class Mammal: public Animal
+class Mammal : public Animal
 {
 protected:
   string furColor;
@@ -41,7 +41,7 @@ public:
   string getFurColor();
 
   //! Metodos Setters
-  
+
   void setFurColor(string);
 };
 

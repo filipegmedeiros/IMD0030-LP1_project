@@ -25,11 +25,11 @@ using std::ostream;
  *	@brief	Class Bird
  *	@details
  */
-class Bird: public Animal
+class Bird : public Animal
 {
 protected:
-    double beakSize;
-    double handleSpan;
+  double beakSize;
+  double handleSpan;
 
 public:
   //! Construtor e Destrutor
@@ -43,7 +43,7 @@ public:
   double getHandleSpan();
 
   //! Metodos Setters
-  
+
   void setBeakSize(double);
   void setHandleSpan(double);
 };

@@ -25,11 +25,11 @@ using std::ostream;
  *	@brief	Class Reptile
  *	@details
  */
-class Reptile: public Animal
+class Reptile : public Animal
 {
 protected:
-    bool isItPoisonous;
-    string poisonType;
+  bool isItPoisonous;
+  string poisonType;
 
 public:
   //! Construtor e Destrutor
@@ -43,7 +43,7 @@ public:
   string getPoisonType();
 
   //! Metodos Setters
-  
+
   void setIsItPoisonous(bool);
   void setPoisonType(string);
 };

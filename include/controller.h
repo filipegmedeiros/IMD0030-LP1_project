@@ -20,8 +20,8 @@ using std::ostream;
 
 class Controller
 {
-  protected:
-  public:
+protected:
+public:
 };
 
 #endif
