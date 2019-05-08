@@ -24,6 +24,7 @@ Caregiver::Caregiver()
 	: Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
 
 {
+	this->securityLevel = 0;
 }
 
 /*!
@@ -37,13 +38,15 @@ Caregiver::Caregiver()
  *	@param	bloodType	Tipo sanguíneo do funcionário.
  *	@param	factorRh	Fator RH do funcionário.
  *	@param	Specialty	Especialidade do funcionário. 
+ *	@param	securityLevel	????????????????
  */
 Caregiver::Caregiver(int id, string function,
 					 string name, string cpf, short int age,
-					 string bloodType, char factorRh, string Specialty)
+					 string bloodType, char factorRh, string Specialty, int securityLevel)
 
 	: Worker(id, function, name, cpf, age, bloodType,
-			 factorRh, Specialty)
+			 factorRh, Specialty),
+	  securityLevel(securityLevel)
 
 {
 }
@@ -55,6 +58,21 @@ Caregiver::~Caregiver()
 {
 }
 
+//! Metodos Getters
+
+/*!	@return	securityLevel */
+int Caregiver::getSecurityLevel()
+{
+	return securityLevel;
+}
+
+//! Metodos Setters
+
+/*!	@param	securityLevel	securityLevel */
+void Caregiver::setSecurityLevel(int securityLevel)
+{
+	this->securityLevel = securityLevel;
+}
 
 /*!
  * @details	Sobrecarga do operador de impressão <<
@@ -63,15 +81,7 @@ Caregiver::~Caregiver()
  */
 ostream &operator<<(ostream &os, Caregiver &Person)
 {
-	os << "Identificador do funcionário: " << Person.id << endl;
-	os << "Função: " << Person.function << endl;
-	os << "Nome do funcionário: " << Person.name << endl;
-	os << "CPF do funcionário: " << Person.cpf << endl;
-	os << "Idade do funcionário: " << Person.age << endl;
-	os << "Tipo Sanguíneo: " << Person.bloodType << endl;
-	os << "Fator RH: " << Person.factorRh << endl;
-	os << "Especialidade: " << Person.Specialty << endl;
-	cout << endl;
-
+	Person.print(os);
+	os << "Level de Segurança: " << Person.securityLevel << endl;
 	return os;
 }
