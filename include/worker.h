@@ -15,8 +15,8 @@
 using std::string;
 
 #include <iostream>
-using std::ostream;
 using std::istream;
+using std::ostream;
 
 /*!
  *	@class		Worker worker.h
@@ -27,8 +27,8 @@ using std::istream;
 
 class Worker
 {
-  protected:
-	virtual void print(ostream &);  
+protected:
+	virtual void print(ostream &);
 	int id;
 	string function;
 	string name;
@@ -38,9 +38,9 @@ class Worker
 	char factorRh;
 	string specialty;
 
-  public:
+public:
 	//! Construtor e Destrutor
-	
+
 	Worker();
 	Worker(int, string, string, string, short int, string, char, string);
 	~Worker();
@@ -67,10 +67,10 @@ class Worker
 	void setFactorRh(const char);
 	void setSpecialty(const string);
 
-    //! Sobrecargas dos operadores
-    friend istream &operator>>(istream &, Worker &);
-    friend ostream &operator<<(ostream &, Worker &);
+	//! Sobrecargas dos operadores
 
+	friend istream &operator>>(istream &, Worker &);
+	friend ostream &operator<<(ostream &, Worker &);
 };
 
 #endif

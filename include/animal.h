@@ -72,6 +72,8 @@ public:
 	void setVeterinary(Veterinary *);
 	void setCaregiver(Caregiver *);
 
+	//! Sobrecargas dos operadores
+
 	friend ostream &operator<<(ostream &, Animal &);
 };
 

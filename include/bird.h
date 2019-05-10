@@ -35,6 +35,8 @@ public:
   //! Construtor e Destrutor
 
   Bird();
+  Bird(int, string, string, char, double, string, string, Veterinary *, Caregiver *, double, double);
+
   ~Bird();
 
   //! Metodos Getters
@@ -46,6 +48,10 @@ public:
 
   void setBeakSize(double);
   void setHandleSpan(double);
+
+	//! Sobrecargas dos operadores
+
+  friend ostream &operator<<(ostream &, Bird &);
 };
 
 #endif
