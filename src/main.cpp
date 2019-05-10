@@ -8,9 +8,9 @@
 
 //! Includes and Usings
 
-#include <veterinary.h>
-#include <caregiver.h>
-#include <animal.h>
+#include "veterinary.h"
+#include "caregiver.h"
+#include "bird.h"
 
 #include <iostream>
 using std::cout;
@@ -18,7 +18,6 @@ using std::endl;
 
 #include <string>
 using std::string;
-
 
 /*!
  * @file	main.cpp
@@ -29,16 +28,49 @@ using std::string;
  */
 int main(void)
 {
-  Veterinary *Vet = new Veterinary(1, "Veterinario", "Jon", "000.000.000-00", 10, "AB", '-', "Leões","33.3.4334");
-  Caregiver *Care = new Caregiver(2, "Tratador", "Snow", "111.111.111-11", 20, "CD", '+', "Tigres",3);
-  Caregiver Caregiver(3, "Veterinario", "Thuize", "222.222.222-22", 30, "EF", '-', "Gatos",3);
- 
-  cout << "Vet 01) " << endl << *(Vet) << endl;
-  cout << "Care 01) " << endl << *(Care) << endl;
-  cout << "Care 02) " << endl << Caregiver << endl;
+  cout << endl;
+  //! Testes dos Veterinarios
+  Veterinary *ponteiro_vet = new Veterinary(1, "Veterinario", "A", "000.000.000-00", 00, "AB", '-', "Leões", "000000");
+  Veterinary vet(2, "Veterinario", "C", "222.222.222-22", 20, "EF", '-', "Leões", "111111");
+  //Veterinary vet_padrao();
+  //Veterinary *ponteiro_vet_padrao = new Veterinary();
+
+  cout << "\033[1;31mponteiro_vet parametrizado\033[0m " << endl << *(ponteiro_vet) << endl;
+  cout << "\033[1;31mvet parametrizado\033[0m " << endl << vet << endl;
+  //?cout << "vet_padrao\033[0m " << endl << vet_padrao << endl;
+  //?cout << "ponteiro_vet_padrao\033[0m " << endl << *(ponteiro_vet_padrao) << endl;
 
 
-  Animal Lion(1,"Mamifero", "Leão", 'M', 30.0, "Humanos", "Filipolino", Vet, Care);
+  //! Testes dos Cuidadores
+  Caregiver *ponteiro_care = new Caregiver(1, "Tratador", "B", "111.111.111-11", 10, "CD", '+', "Tigres", 0);
+  Caregiver care(2, "Tratador", "D", "333.333.333-33", 30, "GH", '+', "Tigres", 1);
+  //Caregiver care_padrao();
+  //Caregiver *ponteiro_care_padrao = new Caregiver();
+  
+  cout << "\033[1;31mponteiro_care parametrizado\033[0m " << endl << *(ponteiro_care) << endl;
+  cout << "\033[1;31mcare parametrizado\033[0m " << endl << care << endl;
+  //?cout << "care_padrao\033[0m " << endl << care_padrao << endl;
+  //?cout << "ponteiro_care_padrao\033[0m " << endl << *(ponteiro_care_padrao) << endl;
 
-  cout << "Animal 01) " << endl << Lion << endl;
+
+
+  //! Teste do Animal
+
+  Animal *ponteiro_animal = new Animal(1,"Mamifero", "Leão", 'M', 30.0, "Humanos", "B", ponteiro_vet, ponteiro_care);
+  Animal animal(2,"Mamifero", "Leão", 'M', 30.0, "Humanos", "A", ponteiro_vet, ponteiro_care);
+  
+  cout << "\033[1;31mponteiro_animal parametrizado\033[0m " << endl << *(ponteiro_animal) << endl;
+  cout << "\033[1;31manimal parametrizado\033[0m " << endl << animal << endl;
+
+  //! Teste Passaro
+  Bird *ponteiro_passaro = new Bird(1,"Mamifero", "Leão", 'M', 30.0, "Humanos", "A", ponteiro_vet, ponteiro_care,30,30);
+  Bird passaro(1,"Mamifero", "Leão", 'M', 30.0, "Humanos", "B", ponteiro_vet, ponteiro_care,30,30);
+  //Bird *ponteiro_passaro = new Bird();
+  //Bird *ponteiro_passaro_padrao = new Bird();
+
+  cout << "\033[1;31mponteiro_animal parametrizado\033[0m " << endl << *(ponteiro_passaro) << endl;
+  cout << "\033[1;31mpassaro parametrizado\033[0m " << endl << passaro << endl;
+  //?cout << "passaro_padrao\033[0m " << endl << care_padrao << endl;
+  //?cout << "passaro_care_padrao\033[0m " << endl << *(ponteiro_care_padrao) << endl;
+
 }
