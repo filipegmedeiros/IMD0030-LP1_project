@@ -185,6 +185,5 @@ void Animal::print(ostream &os)
 ostream &operator<<(ostream &os, Animal &animal)
 {
     animal.print(os);
-
     return os;
 }
