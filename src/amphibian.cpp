@@ -1,12 +1,12 @@
 /*!
- *	@file	bird.cpp
- *	@brief	Implementação do header da classe Bird
+ *	@file	amphibian.cpp
+ *	@brief	Implementação do header da classe Amphibian
  *	@author	Filipe Medeiros
  *	@date	11/05/2019
  *	@since	11/05/2019
  */
 
-#include "bird.h"
+#include "amphibian.h"
 
 #include <iostream>
 using std::cout;
@@ -19,12 +19,12 @@ using std::string;
 //!Construtor
 
 /*! @details O construtor padrão é iniciado com valores defaults */
-Bird::Bird()
-    : Animal(0, "Ave", "", '\0', 0.0, "", "", new Veterinary, new Caregiver)
+Amphibian::Amphibian()
+    : Animal(0, "Anfibio", "", '\0', 0.0, "", "", new Veterinary, new Caregiver)
 
 {
-    this->beakSize = 0.0;
-    this->handleSpan = 0.0;
+    this->totalSeed = 0;
+    this->lastSeed = "";
 }
 
 /*!
@@ -39,53 +39,53 @@ Bird::Bird()
  *	@param	baptismalName	Nome do animal.
  *	@param	Veterinary		Veterinário do animal.
  *	@param	Caregiver		Tratador do animal.
- *  @param  beakSize        Tamanho do Bico.
- *  @param  handleSpan      Tamanho da Enveradura.
+ *  @param  totalSeed       Número de mudas da pele.
+ *  @param  lastSeed        Ultima muda.
  */
-Bird::Bird(int id, string animalClass, string scientificName,
-           char sex, double size, string diet, string baptismalName,
-           Veterinary *veterinary, Caregiver *caregiver, double beakSize, double handleSpan)
+Amphibian::Amphibian(int id, string animalClass, string scientificName,
+                     char sex, double size, string diet, string baptismalName,
+                     Veterinary *veterinary, Caregiver *caregiver, int totalSeed, string lastSeed)
 
     : Animal(id, animalClass, scientificName, sex, size,
              diet, baptismalName, veterinary, caregiver),
-      beakSize(beakSize),
-      handleSpan(handleSpan)
+      totalSeed(totalSeed),
+      lastSeed(lastSeed)
 {
 }
 
 //! Destrutor
 
 /*!	@details	Destrutor padrão da classe Worker*/
-Bird::~Bird()
+Amphibian::~Amphibian()
 {
 }
 
 //! Metodos Getters
 
 /*!	@return		Nome  do Animal */
-double Bird::getBeakSize()
+int Amphibian::getTotalSeed()
 {
-    return beakSize;
+    return totalSeed;
 }
 
 /*!	@return		Nome  do Animal */
-double Bird::getHandleSpan()
+string Amphibian::getLastSeed()
 {
-    return handleSpan;
+    return lastSeed;
 }
 
 //! Metodos Setters
 
-/*!	@param	beakSize		 */
-void Bird::setBeakSize(double beakSize)
+/*!	@param	totalSeed		 */
+void Amphibian::setTotalSeed(int totalSeed)
 {
-    this->beakSize = beakSize;
+    this->totalSeed = totalSeed;
 }
 
-/*!	@param	handleSpan		 */
-void Bird::setHandleSpan(double handleSpan)
+/*!	@param	lastSeed		 */
+void Amphibian::setLastSeed(string lastSeed)
 {
-    this->handleSpan = handleSpan;
+    this->lastSeed = lastSeed;
 }
 
 /*!
@@ -93,11 +93,11 @@ void Bird::setHandleSpan(double handleSpan)
  * @param 	os Output stream
  * @param   Animal Classe Animal
  */
-ostream &operator<<(ostream &os, Bird &animal)
+ostream &operator<<(ostream &os, Amphibian &animal)
 {
     animal.print(os);
-    os << "Tamanho do bico: " << animal.beakSize << endl;
-    os << "Tamanho da envergadura: " << animal.handleSpan << endl;
+    os << "Número de mudas da pele: " << animal.totalSeed << endl;
+    os << "Ultima muda: " << animal.lastSeed << endl;
 
     return os;
 }

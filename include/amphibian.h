@@ -34,15 +34,22 @@ protected:
 public:
   //! Construtor e Destrutor
   Amphibian();
+  Amphibian(int, string, string, char, double, string, string, Veterinary *, Caregiver *, int, string);
   ~Amphibian();
 
   //! Metodos Getters
+
   int getTotalSeed();
   string getLastSeed();
 
   //! Metodos Setters
+
   void setTotalSeed(int);
   void setLastSeed(string);
+
+  //! Sobrecargas dos operadores
+
+  friend ostream &operator<<(ostream &, Amphibian &);
 };
 
 #endif
