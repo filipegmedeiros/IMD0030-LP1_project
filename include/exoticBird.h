@@ -2,8 +2,8 @@
 #define __EXOTICBIRD_H__
 
 /*!
- *	@file		nativeBird.h
- *	@brief		Classe nativeBird
+ *	@file		exoticBird.h
+ *	@brief		Classe exoticBird
  *	@author		Filipe Medeiros
  *	@date		13/05/2019
  *	@since		13/05/2019
