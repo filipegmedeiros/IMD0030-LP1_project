@@ -1,8 +1,8 @@
-#ifndef __BIRD_H_
-#define __BIRD_H_
+#ifndef __bird_H_
+#define __bird_H_
 
 /*!
- *	@file		bird.h
+ *	@file		Bird.h
  *	@brief	Class Bird
  *	@author	Sara Santana
  *	@date		03/05/2019
@@ -12,6 +12,7 @@
 //! Includes and Usings
 
 #include "animal.h"
+#include "wild.h"
 
 #include <string>
 using std::string;
@@ -21,7 +22,7 @@ using std::istream;
 using std::ostream;
 
 /*!
- *	@class	Bird bird.h
+ *	@class	Bird Bird.h
  *	@brief	Class Bird
  *	@details
  */
@@ -34,9 +35,7 @@ protected:
 public:
   //! Construtor e Destrutor
 
-  Bird();
   Bird(int, string, string, char, double, string, string, Veterinary *, Caregiver *, double, double);
-
   ~Bird();
 
   //! Metodos Getters
@@ -48,10 +47,6 @@ public:
 
   void setBeakSize(double);
   void setHandleSpan(double);
-
-	//! Sobrecargas dos operadores
-
-  friend ostream &operator<<(ostream &, Bird &);
 };
 
 #endif
