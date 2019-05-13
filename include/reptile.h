@@ -34,7 +34,7 @@ protected:
 public:
   //! Construtor e Destrutor
 
-  Reptile();
+  Reptile(int, string, string, char, double, string, string, Veterinary *, Caregiver *, bool, string;
   ~Reptile();
 
   //! Metodos Getters

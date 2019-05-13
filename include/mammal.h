@@ -33,7 +33,7 @@ protected:
 public:
   //! Construtor e Destrutor
 
-  Mammal();
+  Mammal(int, string, string, char, double, string, string, Veterinary *, Caregiver *, string);
   ~Mammal();
 
   //! Metodos Getters
