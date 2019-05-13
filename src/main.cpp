@@ -10,7 +10,9 @@
 
 #include "veterinary.h"
 #include "caregiver.h"
+#include "wild.h"
 #include "bird.h"
+#include "nativeBird.h"
 #include "amphibian.h"
 
 #include <iostream>
@@ -68,17 +70,22 @@ int main(void)
   cout << "\033[1;41manimal parametrizado\033[0m " << endl << animal << endl;
 
   //! Teste Passaro
-  Bird *ponteiro_passaro = new Bird(1,"Bird", "Leão", 'M', 30.0, "Humanos", "A", ponteiro_vet, ponteiro_care,30,30);
-  Bird passaro(1,"Bird", "Passaro", 'M', 30.0, "Humanos", "B", ponteiro_vet, ponteiro_care,30,30);
-  //Bird passaro_padrao();
-  Bird *ponteiro_passaro_padrao = new Bird();
+  Bird *ponteiro_passaro = new Bird(1,"das","Mamifero",'\0',0.0,"jdisoaj","jdiosjao",vet,care,20.0,0.0);
+  Bird passaro(1,"Bird", "Passaro", 'M', 30.0, "Humanos", "B", ponteiro_vet, ponteiro_care,"teste",30);
+
 
   cout << "\033[44;5m<><><><><><>TESTE DOS PASSAROS<><><><><><>\033[0m " << endl << endl;
   cout << "\033[1;41mponteiro_passaro parametrizado\033[0m " << endl << *(ponteiro_passaro) << endl;
   cout << "\033[1;41mpassaro parametrizado\033[0m " << endl << passaro << endl;
-  //?cout << "\033[1;42mpassaro_padrao\033[0m " << endl << passaro_padrao << endl;
-  cout << "\033[1;42mponteiro_passaro_padrao\033[0m " << endl << *(ponteiro_passaro_padrao) << endl;
 
+/*   //! Teste Passaro Nativo
+  nativeBird *ponteiro_passaro_nativo = new nativeBird(1,"Bird", "Leão", 'M', 30.0, "Humanos", "A", ponteiro_vet, ponteiro_care,"teste",30,30,"Bird","djsio");
+  nativeBird passaro_nativo(1,"Bird", "Passaro", 'M', 30.0, "Humanos", "B", ponteiro_vet, ponteiro_care,"teste",30,30,"Bird","jasioajd");
+
+
+  cout << "\033[44;5m<><><><><><>TESTE DOS PASSAROS NATIVOS<><><><><><>\033[0m " << endl << endl;
+  cout << "\033[1;41mponteiro_passaro_nativo parametrizado\033[0m " << endl << *(ponteiro_passaro) << endl;
+  cout << "\033[1;41mpassaro_nativo parametrizado\033[0m " << endl << passaro_nativo << endl; */
 
 
   //! Teste Anfibio

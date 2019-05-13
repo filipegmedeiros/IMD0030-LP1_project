@@ -18,15 +18,6 @@ using std::string;
 
 //!Construtor
 
-/*! @details O construtor padrão é iniciado com valores defaults */
-Bird::Bird()
-    : Animal(0, "Ave", "", '\0', 0.0, "", "", new Veterinary, new Caregiver)
-
-{
-    this->beakSize = 0.0;
-    this->handleSpan = 0.0;
-}
-
 /*!
  *	@details	Este construtor recebe argumentos e atributi a classe Animal.
  *
@@ -86,18 +77,4 @@ void Bird::setBeakSize(double beakSize)
 void Bird::setHandleSpan(double handleSpan)
 {
     this->handleSpan = handleSpan;
-}
-
-/*!
- * @details	Sobrecarga do operador de impressão <<
- * @param 	os Output stream
- * @param   Animal Classe Animal
- */
-ostream &operator<<(ostream &os, Bird &animal)
-{
-    animal.print(os);
-    os << "Tamanho do bico: " << animal.beakSize << endl;
-    os << "Tamanho da envergadura: " << animal.handleSpan << endl;
-
-    return os;
 }
