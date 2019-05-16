@@ -27,7 +27,7 @@ using std::ostream;
 class Wild
 {
 protected:
-    virtual void printIbama(ostream &);
+    virtual void printWild(ostream &);
     string ibamaAuth;
 
 public:

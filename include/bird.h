@@ -1,5 +1,5 @@
-#ifndef __bird_H_
-#define __bird_H_
+#ifndef __BIRD_H__
+#define __BIRD_H__
 
 /*!
  *	@file		Bird.h
@@ -47,6 +47,10 @@ public:
 
   void setBeakSize(double);
   void setHandleSpan(double);
+
+  //! Sobrecargas dos operadores
+
+  void print(ostream &);
 };
 
 #endif
