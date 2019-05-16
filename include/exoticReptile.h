@@ -21,7 +21,7 @@ using std::string;
 using std::istream;
 using std::ostream;
 
-class exoticReptile : public Reptile, Exotic
+class exoticReptile : public Reptile, public Exotic
 {
 
 public:

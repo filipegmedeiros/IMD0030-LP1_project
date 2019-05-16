@@ -21,7 +21,7 @@ using std::string;
 using std::istream;
 using std::ostream;
 
-class nativeBird : public Bird, Native
+class nativeBird : public Bird, public Native
 {
 
 public:
