@@ -1,12 +1,12 @@
 /*!
- *	@file	nativeMammal.cpp
- *	@brief	Implementação do header da classe nativeMammal
- *	@author	Filipe Medeiros 
- *	@date	16/05/2019
- *	@since	16/05/2019
+ *	@file	nativeReptile.cpp
+ *	@brief	Implementação do header da classe nativeReptile
+ *	@author	Filipe Medeiros
+ *	@date	11/05/2019
+ *	@since	11/05/2019
  */
 
-#include "nativeMammal.h"
+#include "nativeReptile.h"
 
 #include <iostream>
 using std::cout;
@@ -19,8 +19,8 @@ using std::string;
 //!Construtor
 
 /*! @details O construtor padrão é iniciado com valores defaults */
-nativeMammal::nativeMammal()
-    : Mammal(0, "Mamifero Nativo", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, ""),
+nativeReptile::nativeReptile()
+    : Reptile(0, "Reptil Nativo", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, false, ""),
       Native("", "")
 
 {
@@ -38,16 +38,17 @@ nativeMammal::nativeMammal()
  *	@param	baptismalName	Nome do animal.
  *	@param	Veterinary		Veterinário do animal.
  *	@param	Caregiver		Tratador do animal.
- *  @param  furColor        Cor do pelo.
+ *  @param  isItPoisonous   Venenoso ou não.
+ *  @param  poisonType      Tipo do veneno.
  *  @param  ibamaAuth       Autorização do Ibama.
  *  @param  UFplace         Estado de Origem.
  */
-nativeMammal::nativeMammal(int id, string animalClass, string scientificName,
-                           char sex, double size, string diet, string baptismalName,
-                           Veterinary *veterinary, Caregiver *caregiver, string furColor, string ibamaAuth, string UFplace)
+nativeReptile::nativeReptile(int id, string animalClass, string scientificName,
+                             char sex, double size, string diet, string baptismalName,
+                             Veterinary *veterinary, Caregiver *caregiver, bool isItPoisonous, string poisonType, string ibamaAuth, string UFplace)
 
-    : Mammal(id, animalClass, scientificName, sex, size,
-             diet, baptismalName, veterinary, caregiver, furColor),
+    : Reptile(id, animalClass, scientificName, sex, size,
+              diet, baptismalName, veterinary, caregiver, isItPoisonous, poisonType),
       Native(ibamaAuth, UFplace)
 {
 }
@@ -55,7 +56,7 @@ nativeMammal::nativeMammal(int id, string animalClass, string scientificName,
 //! Destrutor
 
 /*!	@details	Destrutor padrão da classe Worker*/
-nativeMammal::~nativeMammal()
+nativeReptile::~nativeReptile()
 {
 }
 
@@ -64,7 +65,7 @@ nativeMammal::~nativeMammal()
  * @param 	os Output stream
  * @param   Animal Classe Animal
  */
-ostream &operator<<(ostream &os, nativeMammal &animal)
+ostream &operator<<(ostream &os, nativeReptile &animal)
 {
     animal.print(os);
     animal.printWild(os);
