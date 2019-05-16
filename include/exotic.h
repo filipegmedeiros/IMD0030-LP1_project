@@ -20,7 +20,7 @@ using std::string;
 using std::istream;
 using std::ostream;
 
-class Exotic : public Wild, Bird
+class Exotic : public Wild
 {
 protected:
     string birthPlace;
@@ -39,6 +39,8 @@ public:
     //! Metodos Setters
 
     void setBirthPlace(string);
+
+    void printWild(ostream &);
 };
 
 #endif

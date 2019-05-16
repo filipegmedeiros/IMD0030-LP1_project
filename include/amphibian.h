@@ -49,7 +49,7 @@ public:
 
   //! Sobrecargas dos operadores
 
-  friend ostream &operator<<(ostream &, Amphibian &);
+  void print(ostream &);
 };
 
 #endif
