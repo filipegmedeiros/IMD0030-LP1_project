@@ -21,7 +21,7 @@ using std::string;
 using std::istream;
 using std::ostream;
 
-class nativeAmphibian : public Amphibian, Native
+class nativeAmphibian : public Amphibian, public Native
 {
 
 public:
