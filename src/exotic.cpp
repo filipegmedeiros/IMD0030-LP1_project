@@ -6,7 +6,7 @@
  *	@since	13/05/2019
  */
 
-#include "wild.h"
+#include "exotic.h"
 
 #include <iostream>
 using std::cout;
@@ -21,34 +21,35 @@ using std::string;
 /*!
  *	@details	Este construtor recebe argumentos e atributi a classe Animal.
  *
- *	@param	ibamaAuth				Autorização do Ibama.
+ *	@param	birthPlace				Local de Origem.
  */
-Wild::Wild(string ibamaAuth)
-    : ibamaAuth(ibamaAuth)
+Exotic::Exotic(string ibamaAuth, string birthPlace)
+    : Wild(ibamaAuth),
+      birthPlace(birthPlace)
 {
 }
 
 //! Destrutor
 
 /*!	@details	Destrutor padrão da classe Worker*/
-Wild::~Wild()
+Exotic::~Exotic()
 {
 }
 
 //! Metodos Getters
 
-/*!	@return		Autorização do Ibama*/
-string Wild::getIbamaAuth()
+/*!	@return		Local de Nascimento*/
+string Exotic::getBirthPlace()
 {
-    return ibamaAuth;
+    return birthPlace;
 }
 
 //! Metodos Setters
 
-/*!	@param	IbamaAuth		 */
-void Wild::setIbamaAuth(string ibamaAuth)
+/*!	@param	birthPlace		 */
+void Exotic::setBirthPlace(string birthPlace)
 {
-    this->ibamaAuth = ibamaAuth;
+    this->birthPlace = birthPlace;
 }
 
 /*!
@@ -56,7 +57,8 @@ void Wild::setIbamaAuth(string ibamaAuth)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
-void Wild::printIbama(ostream &os)
+void Exotic::printWild(ostream &os)
 {
-    os << "Autorização do Ibama: " << this->ibamaAuth << endl;
+    Wild::printWild(os);
+    os << "Local de Origem: " << this->birthPlace << endl;
 }

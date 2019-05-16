@@ -43,6 +43,10 @@ public:
   //! Metodos Setters
 
   void setFurColor(string);
+
+  //! Sobrecargas dos operadores
+
+  void print(ostream &);
 };
 
 #endif

@@ -20,8 +20,8 @@ using std::string;
 
 /*! @details O construtor padrão é iniciado com valores defaults */
 exoticMammal::exoticMammal()
-    : Mammal(0, "Mammal", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, ""),
-      Exotic("")
+    : Mammal(0, "Mamifero Exótico", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, ""),
+      Exotic("", "")
 
 {
 }
@@ -43,11 +43,11 @@ exoticMammal::exoticMammal()
  *  @param  birthPlace      País de Origem.
  */
 exoticMammal::exoticMammal(int id, string animalClass, string scientificName,
-                       char sex, double size, string diet, string baptismalName,
-                       Veterinary *veterinary, Caregiver *caregiver, string furColor, string ibamaAuth, string birthPlace)
+                           char sex, double size, string diet, string baptismalName,
+                           Veterinary *veterinary, Caregiver *caregiver, string furColor, string ibamaAuth, string birthPlace)
 
     : Mammal(id, animalClass, scientificName, sex, size,
-           diet, baptismalName, veterinary, caregiver, furColor),
+             diet, baptismalName, veterinary, caregiver, furColor),
       Exotic(ibamaAuth, birthPlace)
 {
 }
@@ -66,5 +66,7 @@ exoticMammal::~exoticMammal()
  */
 ostream &operator<<(ostream &os, exoticMammal &animal)
 {
+    animal.print(os);
+    animal.printWild(os);
     return os;
 }

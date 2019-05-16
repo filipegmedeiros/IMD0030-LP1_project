@@ -33,8 +33,8 @@ using std::string;
  *  @param  furColor        Cor do pelo.
  */
 Mammal::Mammal(int id, string animalClass, string scientificName,
-           char sex, double size, string diet, string baptismalName,
-           Veterinary *veterinary, Caregiver *caregiver, string furColor)
+               char sex, double size, string diet, string baptismalName,
+               Veterinary *veterinary, Caregiver *caregiver, string furColor)
 
     : Animal(id, animalClass, scientificName, sex, size,
              diet, baptismalName, veterinary, caregiver),
@@ -60,7 +60,18 @@ string Mammal::getFurColor()
 //! Metodos Setters
 
 /*!	@param	furColor	*/
-void Mammal::setFurColor (string furColor)
+void Mammal::setFurColor(string furColor)
 {
     this->furColor = furColor;
+}
+
+/*!
+ * @details	Função Print sobrecarregada da print Animal.
+ * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
+ * @param 	os Output stream
+ */
+void Mammal::print(ostream &os)
+{
+    Animal::print(os);
+    os << "Cor do Pelo: " << this->furColor << endl;
 }
