@@ -46,6 +46,10 @@ public:
 
   void setIsItPoisonous(bool);
   void setPoisonType(string);
+
+  //! Sobrecargas dos operadores
+
+  void print(ostream &);
 };
 
 #endif

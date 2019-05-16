@@ -20,8 +20,8 @@ using std::string;
 
 /*! @details O construtor padrão é iniciado com valores defaults */
 exoticReptile::exoticReptile()
-    : Reptile(0, "Ave", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, false, ""),
-      Exotic("")
+    : Reptile(0, "Reptil Exótico", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, false, ""),
+      Exotic("","")
 
 {
 }
@@ -44,11 +44,11 @@ exoticReptile::exoticReptile()
  *  @param  birthPlace      País de Origem.
  */
 exoticReptile::exoticReptile(int id, string animalClass, string scientificName,
-                       char sex, double size, string diet, string baptismalName,
-                       Veterinary *veterinary, Caregiver *caregiver, bool isItPoisonous, string poisonType, string birthPlace)
+                             char sex, double size, string diet, string baptismalName,
+                             Veterinary *veterinary, Caregiver *caregiver, bool isItPoisonous, string poisonType,string ibamaAuth, string birthPlace)
 
     : Reptile(id, animalClass, scientificName, sex, size,
-           diet, baptismalName, veterinary, caregiver, isItPoisonous, poisonType),
+              diet, baptismalName, veterinary, caregiver, isItPoisonous, poisonType),
       Exotic(ibamaAuth, birthPlace)
 {
 }

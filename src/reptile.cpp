@@ -34,8 +34,8 @@ using std::string;
  *  @param  poisonType      Tipo do veneno.
  */
 Reptile::Reptile(int id, string animalClass, string scientificName,
-           char sex, double size, string diet, string baptismalName,
-           Veterinary *veterinary, Caregiver *caregiver, bool isItPoisonous, string poisonType)
+                 char sex, double size, string diet, string baptismalName,
+                 Veterinary *veterinary, Caregiver *caregiver, bool isItPoisonous, string poisonType)
 
     : Animal(id, animalClass, scientificName, sex, size,
              diet, baptismalName, veterinary, caregiver),
@@ -74,7 +74,14 @@ void Reptile::setIsItPoisonous(bool isItPoisonous)
 }
 
 /*!	@param	poisonType	*/
-void Reptile::setPoisonType (string poisonType)
+void Reptile::setPoisonType(string poisonType)
 {
     this->poisonType = poisonType;
+}
+
+void Reptile::print(ostream &os)
+{
+    Animal::print(os);
+    os << "É venenoso: " << this->isItPoisonous << endl;
+    os << "Tipo do Veneno: " << this->poisonType << endl;
 }
