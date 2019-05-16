@@ -20,8 +20,8 @@ using std::string;
 
 /*! @details O construtor padrão é iniciado com valores defaults */
 exoticBird::exoticBird()
-    : Bird(0, "Ave", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, 0, 0),
-      Exotic("")
+    : Bird(0, "Ave Exótica", "", '\0', 0.0, "", "", new Veterinary, new Caregiver, 0, 0),
+      Exotic("", "")
 
 {
 }
@@ -67,5 +67,7 @@ exoticBird::~exoticBird()
  */
 ostream &operator<<(ostream &os, exoticBird &animal)
 {
+    animal.print(os);
+    animal.printWild(os);
     return os;
 }

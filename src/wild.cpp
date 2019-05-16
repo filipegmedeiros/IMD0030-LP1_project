@@ -56,7 +56,7 @@ void Wild::setIbamaAuth(string ibamaAuth)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
-void Wild::printIbama(ostream &os)
+void Wild::printWild(ostream &os)
 {
     os << "Autorização do Ibama: " << this->ibamaAuth << endl;
 }

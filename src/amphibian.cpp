@@ -89,15 +89,13 @@ void Amphibian::setLastSeed(string lastSeed)
 }
 
 /*!
- * @details	Sobrecarga do operador de impressão <<
+ * @details	Função Print sobrecarregada da print Animal.
+ * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
- * @param   Animal Classe Animal
  */
-ostream &operator<<(ostream &os, Amphibian &animal)
+void Amphibian::print(ostream &os)
 {
-    animal.print(os);
-    os << "Número de mudas da pele: " << animal.totalSeed << endl;
-    os << "Ultima muda: " << animal.lastSeed << endl;
-
-    return os;
+    Animal::print(os);
+    os << "Número de mudas da pele: " << this->totalSeed << endl;
+    os << "Última Muda: " << this->lastSeed << endl;
 }
