@@ -194,3 +194,10 @@ ostream &operator<<(ostream &os, Worker &Person)
     Person.print(os);
     return os;
 }
+
+istream &operator>>(istream &input, Worker &Person)
+{
+
+    input >> Person.id >> Person.name >> Person.cpf >> Person.age >> Person.bloodType >> Person.factorRh >> Person.specialty;
+
+}
