@@ -184,6 +184,19 @@ void Worker::print(ostream &os)
     os << "Especialidade: " << this->specialty << endl;
 }
 
+void Worker::input(istream &is)
+{
+    is >> this->id;
+    is >> this->function;
+    is >> this->name;
+    is >> this->cpf;
+    is >> this->age;
+    is >> this->bloodType;
+    is >> this->factorRh;
+    is >> this->specialty;
+}
+
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
@@ -195,9 +208,9 @@ ostream &operator<<(ostream &os, Worker &Person)
     return os;
 }
 
-istream &operator>>(istream &input, Worker &Person)
+istream &operator>>(istream &is, Worker &Person)
 {
-
-    input >> Person.id >> Person.name >> Person.cpf >> Person.age >> Person.bloodType >> Person.factorRh >> Person.specialty;
+   Person.input(is);
+   return is;
 
 }

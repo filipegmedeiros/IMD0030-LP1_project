@@ -29,6 +29,7 @@ class Worker
 {
 protected:
 	virtual void print(ostream &);
+	virtual void input(istream &);
 	int id;
 	string function;
 	string name;
