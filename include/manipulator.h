@@ -49,15 +49,15 @@ void Manipulator::addWorker()
 {
     cout << "Para adicionar um novo Funcionário é necessário algumas informações." << endl;
     cout << "É um novo vetérinario ou Cuidador?" << endl;
-    string Aswner;
-    cin >> Aswner;
+    string Answer;
+    cin >> Answer;
     try
     {
-        if (Aswner == "Veterinario" || "veterinario")
+        if (Answer == "Veterinario" || "veterinario")
         {
             addVeterinary();
         }
-        else if (Aswner == "Cuidador" || "cuidador")
+        else if (Answer == "Cuidador" || "cuidador")
         {
             addCaregiver();
         }
