@@ -172,17 +172,17 @@ void Worker::setSpecialty(const string Specialty)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
-void Worker::print(ostream &os)
-{
-    os << "Identificador do funcionário: " << this->id << endl;
-    os << "Função: " << this->function << endl;
-    os << "Nome do funcionário: " << this->name << endl;
-    os << "CPF do funcionário: " << this->cpf << endl;
-    os << "Idade do funcionário: " << this->age << endl;
-    os << "Tipo Sanguíneo: " << this->bloodType << endl;
-    os << "Fator RH: " << this->factorRh << endl;
-    os << "Especialidade: " << this->specialty << endl;
-}
+// void Worker::print(ostream &os)
+// {
+//     os << "Identificador do funcionário: " << this->id << endl;
+//     os << "Função: " << this->function << endl;
+//     os << "Nome do funcionário: " << this->name << endl;
+//     os << "CPF do funcionário: " << this->cpf << endl;
+//     os << "Idade do funcionário: " << this->age << endl;
+//     os << "Tipo Sanguíneo: " << this->bloodType << endl;
+//     os << "Fator RH: " << this->factorRh << endl;
+//     os << "Especialidade: " << this->specialty << endl;
+// }
 
 void Worker::input(istream &is)
 {
@@ -202,11 +202,7 @@ void Worker::input(istream &is)
  * @param 	os Output stream
  * @param   Person Classe Veterinary
  */
-ostream &operator<<(ostream &os, Worker &Person)
-{
-    Person.print(os);
-    return os;
-}
+
 
 istream &operator>>(istream &is, Worker &Person)
 {

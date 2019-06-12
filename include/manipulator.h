@@ -45,43 +45,6 @@ public:
 
 
 
-void Manipulator::addWorker()
-{
-    cout << "Para adicionar um novo Funcionário é necessário algumas informações." << endl;
-    cout << "É um novo vetérinario ou Cuidador?" << endl;
-    string Answer;
-    cin >> Answer;
-    try
-    {
-        if (Answer == "Veterinario" || "veterinario")
-        {
-            addVeterinary();
-        }
-        else if (Answer == "Cuidador" || "cuidador")
-        {
-            addCaregiver();
-        }
-    }
-    catch (...)
-    {
-        cout << "Nome Inválido. Tente novamente." << endl;
-        addWorker();
-    }
-}
 
-void Manipulator::addVeterinary()
-{
-    Veterinary *newVet = new Veterinary();
-    cout << "Informe o ID do novo Veterinário " << endl;
-    try
-    {
-        int id;
-        cin >> id;
-        newVet->setId(id);
-    }
-    catch (...)
-    {
-        cout << "O valor do ID tem que ser inteiro." << endl;
-    }
-}
+
 #endif

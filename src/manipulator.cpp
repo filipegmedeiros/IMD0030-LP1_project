@@ -9,6 +9,7 @@
 #include "manipulator.h"
 
 #include <iostream>
+#include <fstream>
 using std::cout;
 using std::endl;
 using std::ostream;
@@ -46,15 +47,25 @@ void Manipulator::addWorker()
 void Manipulator::addVeterinary()
 {
     Veterinary *newVet = new Veterinary();
-    cout << "Informe o ID do novo Veterinário " << endl;
-    try
-    {
-        int id;
-        cin >> id;
-        newVet->setId(id);
+    string data = "ID;NAME;CPF;AGE;BLOOD TYPE;FACTOR RH;SPECIALTY;CRMV;";
+    std::ofstream outfile("Worker.csv");
+
+    if(!outfile.is_open()){
+        cout << "Error opening file" << endl;
+    }else if(outfile.is_open()){
+        outfile << data << *newVet << endl;
+        outfile.close();
     }
-    catch (...)
-    {
-        cout << "O valor do ID tem que ser inteiro." << endl;
-    }
+
+    // cout << "Informe o ID do novo Veterinário " << endl;
+    // try
+    // {
+    //     int id;
+    //     cin >> id;
+    //     newVet->setId(id);
+    // }
+    // catch (...)
+    // {
+    //     cout << "O valor do ID tem que ser inteiro." << endl;
+    // }
 }
