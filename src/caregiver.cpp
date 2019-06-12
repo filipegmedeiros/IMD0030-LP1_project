@@ -79,9 +79,3 @@ void Caregiver::setSecurityLevel(int securityLevel)
  * @param 	os Output stream
  * @param   Person Classe Caregiver
  */
-ostream &operator<<(ostream &os, Caregiver &Person)
-{
-	Person.print(os);
-	os << "Level de Segurança: " << Person.securityLevel << endl;
-	return os;
-}

@@ -19,6 +19,7 @@ using std::string;
 #include <iostream>
 using std::istream;
 using std::ostream;
+using std::endl;
 
 /*!
  *	@class		Veterinary veterinary.h
@@ -28,8 +29,19 @@ using std::ostream;
  */
 class Veterinary : public Worker
 {
+
 private:
-  string crmv;
+string crmv;
+  ostream& print(ostream& os)const{
+    return os << id << ";"
+              << name << ";"
+              << cpf << ";"
+              << age << ";"
+              << bloodType << ";"
+              << factorRh << ";"
+              << specialty << ";" 
+              << crmv << ";" << endl;
+  }
 
 public:
   //! Construtor e Destrutor
@@ -46,6 +58,7 @@ public:
   void setCrmv(string);
 
   //! Sobrecargas dos operadores
+  void print();
   friend istream &operator>>(istream &, Veterinary &);
   friend ostream &operator<<(ostream &, Veterinary &);
 };

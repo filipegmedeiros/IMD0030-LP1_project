@@ -19,6 +19,7 @@ using std::string;
 #include <iostream>
 using std::istream;
 using std::ostream;
+using std::endl;
 
 /*!
  *	@class		Caregiver caregiver.h
@@ -31,7 +32,16 @@ class Caregiver : public Worker
 
 private:
   int securityLevel;
-
+  ostream& print(ostream& os)const{
+    return os << id << ";"
+              << name << ";"
+              << cpf << ";"
+              << age << ";"
+              << bloodType << ";"
+              << factorRh << ";"
+              << specialty << ";" 
+              << securityLevel << ";" << endl;
+  }
 public:
   //! Construtor e Destrutor
   Caregiver();
@@ -47,6 +57,7 @@ public:
   void setSecurityLevel(int);
 
   //! Sobrecargas dos operadores
+  void print();
   friend istream &operator>>(istream &, Caregiver &);
   friend ostream &operator<<(ostream &, Caregiver &);
 };

@@ -79,9 +79,3 @@ void Veterinary::setCrmv(string crmv)
  * @param 	os Output stream
  * @param   Person Classe Veterinary
  */
-ostream &operator<<(ostream &os, Veterinary &Person)
-{
-  Person.print(os);
-  os << "Código do CRMV: " << Person.crmv << endl;
-  return os;
-}
