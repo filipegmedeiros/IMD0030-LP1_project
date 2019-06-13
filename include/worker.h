@@ -44,7 +44,7 @@ public:
 
 	Worker();
 	Worker(int, string, string, string, short int, string, char, string);
-	~Worker();
+	virtual ~Worker()=0;
 
 	//! Metodos Getters
 

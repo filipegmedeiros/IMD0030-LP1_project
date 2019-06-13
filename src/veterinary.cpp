@@ -21,10 +21,11 @@ using std::string;
 
 /*! @details O construtor padrão é iniciado com valores defaults */
 Veterinary::Veterinary()
-    : Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
+    : Worker()
 
 {
-  this->crmv = "";
+  this->crmv = "crmv";
+  this->specialty="Veterinary";
 }
 
 /*!
@@ -40,7 +41,7 @@ Veterinary::Veterinary()
  *	@param	specialty	Especialidade do funcionário. 
  *  @param  crmv      Número de Identificação CRMV.
  */
-Veterinary::Veterinary(int id, string function,
+ Veterinary::Veterinary(int id, string function,
                        string name, string cpf, short int age,
                        string bloodType, char factorRh, string specialty, string crmv)
 
@@ -74,8 +75,20 @@ void Veterinary::setCrmv(string crmv)
   this->crmv = crmv;
 }
 
+void Veterinary::print()
+{
+  cout << crmv;
+}
+
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
  * @param   Person Classe Veterinary
  */
+
+ostream &operator<<(ostream &os, Veterinary &vet)
+{
+  vet.print(os);
+  return os;
+}

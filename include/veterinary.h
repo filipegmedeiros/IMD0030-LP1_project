@@ -34,6 +34,7 @@ private:
 string crmv;
   ostream& print(ostream& os)const{
     return os << id << ";"
+              << function << ";"
               << name << ";"
               << cpf << ";"
               << age << ";"

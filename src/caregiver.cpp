@@ -21,10 +21,12 @@ using std::string;
 
 /*! @details	O construtor padrão é iniciado com valores defaults */
 Caregiver::Caregiver()
-    : Worker(0, "Unemployed", "", "000.000.000-00", 0, "A", '\0', "")
+    : Worker()
 
 {
 	this->securityLevel = 0;
+	this->specialty = "Caregiver";
+
 }
 
 /*!
@@ -74,8 +76,19 @@ void Caregiver::setSecurityLevel(int securityLevel)
 	this->securityLevel = securityLevel;
 }
 
+void Caregiver::print()
+{
+	cout << securityLevel;
+}
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
  * @param   Person Classe Caregiver
  */
+
+ostream &operator<<(ostream &os, Caregiver &care)
+{
+  care.print(os);
+  return os;
+}
