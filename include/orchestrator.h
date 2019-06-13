@@ -38,9 +38,9 @@ void Orchestrator::menu()
     case 'A':
          addWorker();
          break;
-    case 'B':
-        addAnimal();
-        break;
+    // case 'B':
+    //     addAnimal();
+    //     break;
          default:
             cout << "opçao invalida" << endl;
          break;

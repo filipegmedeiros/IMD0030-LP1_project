@@ -102,31 +102,31 @@ void Manipulator::addCaregiver()
         outfileWorker2.close();
 }
 
-void Manipulator::addAnimal()
-{
-    int animalType=0;
-    cout<<"Escolha qual animal deseja adicionar:"<<endl;
-    cout<<"1 - Passaro; 2 - Anfibio; 3 - Mamifero; 4 - Reptil"<<endl;
-    cin >> animalType;
+// void Manipulator::addAnimal()
+// {
+//     int animalType=0;
+//     cout<<"Escolha qual animal deseja adicionar:"<<endl;
+//     cout<<"1 - Passaro; 2 - Anfibio; 3 - Mamifero; 4 - Reptil"<<endl;
+//     cin >> animalType;
 
 
-    string data = "ID;ANIMALCLASS;SCIENTIFIC NAME;SEX;SIZE;DIET;BAPTISMAL NAME;VETERINARY;CAREGIVER;TOTALSEED;LAST SEED";
-    string name = "data/Animals/ExoticAmphibian.csv";
+//     string data = "ID;ANIMALCLASS;SCIENTIFIC NAME;SEX;SIZE;DIET;BAPTISMAL NAME;VETERINARY;CAREGIVER;TOTALSEED;LAST SEED";
+//     string name = "data/Animals/ExoticAmphibian.csv";
 
-    if((FileExists(name))==false){
-        std::ofstream outfileWorker;
-        outfileWorker.open("data/Animals/ExoticAmphibian.csv",std::ios_base::app);
-        outfileWorker << data << endl;
-        outfileWorker.close();
-    }
+//     if((FileExists(name))==false){
+//         std::ofstream outfileWorker;
+//         outfileWorker.open("data/Animals/ExoticAmphibian.csv",std::ios_base::app);
+//         outfileWorker << data << endl;
+//         outfileWorker.close();
+//     }
 
-    exoticAmphibian *newExoAmph= new exoticAmphibian();
-    std::ofstream outfileWorker2;
-     outfileWorker2.open("data/Animals/ExoticAmphibian.csv", std::ios_base::app);
+//     exoticAmphibian *newExoAmph= new exoticAmphibian();
+//     std::ofstream outfileWorker2;
+//      outfileWorker2.open("data/Animals/ExoticAmphibian.csv", std::ios_base::app);
     
     
         
-        outfileWorker2 << *newExoAmph;
-        outfileWorker2.close();
+//         outfileWorker2 << *newExoAmph;
+//         outfileWorker2.close();
 
-}
+// }
