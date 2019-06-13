@@ -23,11 +23,11 @@ using std::string;
 Worker::Worker()
     : id(0),
       function("Unemployed"),
-      name(""),
+      name("nome"),
       cpf("000.000.000-00"),
       age(0),
-      bloodType(""),
-      factorRh('\0')
+      bloodType("Unkwown"),
+      factorRh('A')
 
 {
 }

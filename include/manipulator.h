@@ -12,6 +12,11 @@
 //! Includes and Usings
 
 #include "veterinary.h"
+#include "caregiver.h"
+#include "exoticAmphibian.h"
+#include "exoticReptile.h"
+#include "exoticBird.h"
+#include "exoticMammal.h"
 
 #include <string>
 using std::string;
@@ -26,6 +31,7 @@ using std::ostream;
 class Manipulator
 {
 protected:
+    bool FileExists(string);
     void addWorker();
     void addVeterinary();
     void addCaregiver();
