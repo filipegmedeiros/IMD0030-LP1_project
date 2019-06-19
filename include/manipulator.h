@@ -10,6 +10,8 @@
  */
 
 //! Includes and Usings
+#include "animal.h"
+#include "worker.h"
 
 #include "veterinary.h"
 #include "caregiver.h"
@@ -28,13 +30,24 @@ using std::endl;
 using std::istream;
 using std::ostream;
 
+
+#include <map>
+using std::map;
+
 class Manipulator
 {
 protected:
+
+
+    map<int, Animal* > animals;
+    map<int, Worker* > workers;
+
+    void loadArchives();
+
     bool FileExists(string);
+
     void addWorker();
-    void addVeterinary();
-    void addCaregiver();
+
 
     void addAnimal();
 

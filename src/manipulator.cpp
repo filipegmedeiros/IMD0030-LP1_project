@@ -13,120 +13,85 @@
 using std::cout;
 using std::endl;
 using std::ostream;
+using std::ofstream;
+using std::ifstream;
 
 #include <string>
 using std::string;
 
+#include <vector>
+using std::vector;
+using std::pair;
 
 
-bool Manipulator::FileExists(string name){
-    if (FILE *file = fopen(name.c_str(), "r")) {
-        fclose(file);
-        return true;
-    } else {
-        return false;
-    }   
+void Manipulator::loadArchives()
+{/* 
+    ifstream workersCsv("data/Workers.csv");
+    //!ifstream animalsCsv("data/Animals.csv");
+
+    //Carregando os dados dos funcionários
+    if (workersCsv.is_open())
+    {
+        string line;
+        //! Procurar na net algo que separe o csv em campos.
+        vector<string> fields; //Campos do csv separados... 
+
+        while (getline(workersCsv, line))
+        {
+            //Carregando algumas das informações do funcionário
+
+            
+            //Caso for um tratador
+            if (funcao.compare("TRATADOR") == 0)
+            {
+                Worker *temp = new Caregiver(1, "a", "a", "b", 2, "c", '\0', "a", 1);
+                workers.insert(pair<int, Worker *>(id, temp));
+            }
+            //Caso for um funcionário
+            else
+            {
+                //string crmv = palavras[8];
+                Worker *temp = new Veterinary(1, "a", "a", "b", 2, "c", '\0', "a", "b");
+                workers.insert(pair<int, Worker *>(id, temp));
+            }
+        }
+    } */
 }
 
 void Manipulator::addWorker()
 {
-    string data = "ID;FUNCTION;NAME;CPF;AGE;BLOOD TYPE;FACTOR RH;SPECIALTY;CRMV;";
-    string name = "data/Worker.csv";
+    cout << "Adicionar (1)Veterinario ou (2)Cuidador?";
+    int a;
+    std::cin >> a;
 
-    if((FileExists(name))==false){
-        std::ofstream outfileWorker;
-        outfileWorker.open("data/Worker.csv",std::ios_base::app);
-        outfileWorker << data << endl;
-        outfileWorker.close();
-    }
+    switch (a)
+    {
+    case 1:
+        int id;
+        cin >> id;
+        // falta os cins
 
-    
-
-    cout << "Para adicionar um novo Funcionário é necessário algumas informações." << endl;
-    cout << "É um novo vetérinario ou Cuidador?" << endl;
-    string Answer;
-    cin >> Answer;
-    // try
-    // {
-         if (Answer == "Veterinario" || Answer == "veterinario")
-         {
-            addVeterinary();
-         }
-
-        else if (Answer == "Cuidador" || Answer == "cuidador")
+        //verifica se no map tem o ID passado
+        for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
         {
-            addCaregiver();
+            if (it->first == 1 /*id*/)
+            {
+                cout << " já existe esse id";
+                break;
+            }
         }
-    // }
-    // catch (...)
-    // {
-    //     cout << "Nome Inválido. Tente novamente." << endl;
-    //     addWorker();
-    // }
-}
+        //cria um worker temp
+        Worker *worker = new Veterinary(id, "a", "a", "b", 2, "c", '\0', "a", "b");
 
-void Manipulator::addVeterinary()
-{
-    Veterinary *newVet = new Veterinary(1, "Vet", "Sara", "123.956.789-00", 40, "B",'+', "Vet","1987");
-    std::ofstream outfileWorker2;
-     outfileWorker2.open("data/Worker.csv", std::ios_base::app);
-    
-    
-        
-        outfileWorker2 << *newVet;
-        outfileWorker2.close();
+        //adiciona no map
+        workers.insert(std::pair<int, Worker *>(1, worker));
+
+        //salva no arquivo.
+        std::ofstream outfileWorker;
+        outfileWorker.open("data/Worker.csv", std::ios_base::app);
+        outfileWorker << *worker;
+        outfileWorker.close();
+
+        break;
     }
-
-    // cout << "Informe o ID do novo Veterinário " << endl;
-    // try
-    // {
-    //     int id;
-    //     cin >> id;
-    //     newVet->setId(id);
-    // }
-    // catch (...)
-    // {
-    //     cout << "O valor do ID tem que ser inteiro." << endl;
-    // }
-
-
-void Manipulator::addCaregiver()
-{
-    Caregiver *newCare = new Caregiver();
-    std::ofstream outfileWorker2;
-     outfileWorker2.open("data/Worker.csv", std::ios_base::app);
-    
-    
-        
-        outfileWorker2 << *newCare;
-        outfileWorker2.close();
 }
-
-// void Manipulator::addAnimal()
-// {
-//     int animalType=0;
-//     cout<<"Escolha qual animal deseja adicionar:"<<endl;
-//     cout<<"1 - Passaro; 2 - Anfibio; 3 - Mamifero; 4 - Reptil"<<endl;
-//     cin >> animalType;
-
-
-//     string data = "ID;ANIMALCLASS;SCIENTIFIC NAME;SEX;SIZE;DIET;BAPTISMAL NAME;VETERINARY;CAREGIVER;TOTALSEED;LAST SEED";
-//     string name = "data/Animals/ExoticAmphibian.csv";
-
-//     if((FileExists(name))==false){
-//         std::ofstream outfileWorker;
-//         outfileWorker.open("data/Animals/ExoticAmphibian.csv",std::ios_base::app);
-//         outfileWorker << data << endl;
-//         outfileWorker.close();
-//     }
-
-//     exoticAmphibian *newExoAmph= new exoticAmphibian();
-//     std::ofstream outfileWorker2;
-//      outfileWorker2.open("data/Animals/ExoticAmphibian.csv", std::ios_base::app);
-    
-    
-        
-//         outfileWorker2 << *newExoAmph;
-//         outfileWorker2.close();
-
-// }
