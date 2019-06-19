@@ -29,39 +29,22 @@ public:
 
 void Orchestrator::menu()
 {
-    char Case;
+
+    cout << "'1' para adicionar um fucionario" << endl;
+    cout << "'2' para adicionar um animal" << endl;
+    int Case;
     cin >> Case;
-     cout << "'A' para adicionar um fucionario" << endl;
-     cout << "'B' para adicionar um animal" << endl;
-     switch (Case)
-     {
-    case 'A':
-         addWorker();
-         break;
-    // case 'B':
-    //     addAnimal();
-    //     break;
-         default:
-            cout << "opçao invalida" << endl;
-         break;
-     }
-    
-    // case 'C':
-    //     changeAnimal();
-    //     break;
-    // case 'D':
-    //     removeWorker();
-    //     break;
-    // case 'E':
-    //     removeAnimal();
-    //     break;
-    // case 'F':
-    //     searchAnimal();
-    //     break;
-    // case 'G':
-    //     searchWorker();
-    //     break;
-    // }
+
+    switch (Case)
+    {
+    case 1:
+        addWorker();
+        break;
+        
+    default:
+        cout << "opçao invalida" << endl;
+        break;
+    }
 }
 
 #endif
