@@ -30,24 +30,28 @@ using std::endl;
 using std::istream;
 using std::ostream;
 
-
 #include <map>
 using std::map;
+
+#include <vector>
+using std::pair;
+using std::vector;
+
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
+using std::ostream;
 
 class Manipulator
 {
 protected:
-
-
-    map<int, Animal* > animals;
-    map<int, Worker* > workers;
+    map<int, Animal *> animals;
+    map<int, Worker *> workers;
 
     void loadArchives();
 
-    bool FileExists(string);
-
+    void checkId(int);
     void addWorker();
-
 
     void addAnimal();
 
@@ -61,9 +65,5 @@ protected:
 
 public:
 };
-
-
-
-
 
 #endif
