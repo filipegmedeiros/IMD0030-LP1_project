@@ -28,7 +28,7 @@ using std::ostream;
 class Worker
 {
 protected:
-	virtual ostream& print(ostream&)const = 0;
+	virtual ostream &print(ostream &) const = 0;
 	virtual void input(istream &);
 	int id;
 	string function;
@@ -44,7 +44,7 @@ public:
 
 	Worker();
 	Worker(int, string, string, string, short int, string, char, string);
-	virtual ~Worker()=0;
+	virtual ~Worker() = 0;
 
 	//! Metodos Getters
 
@@ -69,9 +69,10 @@ public:
 	void setSpecialty(const string);
 
 	//! Sobrecargas dos operadores
-	virtual void print()=0;	
+	virtual void print() = 0;
 	friend istream &operator>>(istream &, Worker &);
-	friend ostream &operator<<(ostream& os, const Worker& Person){
+	friend ostream &operator<<(ostream &os, const Worker &Person)
+	{
 		return Person.print(os);
 	};
 };

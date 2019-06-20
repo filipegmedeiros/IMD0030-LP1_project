@@ -22,29 +22,12 @@ using std::ostream;
 
 class Orchestrator : public Manipulator
 {
-protected:
+private:
+    bool loop;
+
 public:
+    Orchestrator();
     void menu();
 };
-
-void Orchestrator::menu()
-{
-
-    cout << "'1' para adicionar um fucionario" << endl;
-    cout << "'2' para adicionar um animal" << endl;
-    int Case;
-    cin >> Case;
-
-    switch (Case)
-    {
-    case 1:
-        addWorker();
-        break;
-        
-    default:
-        cout << "opçao invalida" << endl;
-        break;
-    }
-}
 
 #endif

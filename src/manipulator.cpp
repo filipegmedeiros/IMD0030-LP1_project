@@ -8,90 +8,103 @@
 
 #include "manipulator.h"
 
-#include <iostream>
-#include <fstream>
-using std::cout;
-using std::endl;
-using std::ostream;
-using std::ofstream;
-using std::ifstream;
-
-#include <string>
-using std::string;
-
-#include <vector>
-using std::vector;
-using std::pair;
-
-
-void Manipulator::loadArchives()
-{/* 
-    ifstream workersCsv("data/Workers.csv");
-    //!ifstream animalsCsv("data/Animals.csv");
-
-    //Carregando os dados dos funcionários
-    if (workersCsv.is_open())
+void Manipulator::checkId(int id)
+{
+    //verifica se no map tem o ID passado
+    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
     {
-        string line;
-        //! Procurar na net algo que separe o csv em campos.
-        vector<string> fields; //Campos do csv separados... 
-
-        while (getline(workersCsv, line))
+        if (it->first == id)
         {
-            //Carregando algumas das informações do funcionário
-
-            
-            //Caso for um tratador
-            if (funcao.compare("TRATADOR") == 0)
-            {
-                Worker *temp = new Caregiver(1, "a", "a", "b", 2, "c", '\0', "a", 1);
-                workers.insert(pair<int, Worker *>(id, temp));
-            }
-            //Caso for um funcionário
-            else
-            {
-                //string crmv = palavras[8];
-                Worker *temp = new Veterinary(1, "a", "a", "b", 2, "c", '\0', "a", "b");
-                workers.insert(pair<int, Worker *>(id, temp));
-            }
+            cout << "That ID has been found. Try Again.";
         }
-    } */
+    }
 }
 
 void Manipulator::addWorker()
 {
-    cout << "Adicionar (1)Veterinario ou (2)Cuidador?";
-    int a;
-    std::cin >> a;
+    cout << "Choice One Option: " << endl
+         << "[1] To Register an Veterinary" << endl
+         << "[2] To Register an Caregiver" << endl;
+    int whatIs;
+    cin >> whatIs;
 
-    switch (a)
+    int id;
+    string function;
+    string name;
+    string cpf;
+    short int age;
+    string bloodType;
+    char factorRh;
+    string specialty;
+
+    cout << "[----------------]" << endl;
+    cout << "Choice an ID: ";
+    cin >> id;
+    checkId(id);
+
+    cout << "Type the Function: ";
+    cin >> function;
+
+    cout << "He/She Name: ";
+    cin.ignore();
+    getline(cin, name);
+
+    cout << "CPF: (000.000.000-00) ";
+    cin >> cpf;
+
+    cout << "He/She Age: ";
+    cin >> age;
+
+    cout << "blood Type: ";
+    cin >> bloodType;
+
+    cout << "factor RH: ";
+    cin >> factorRh;
+
+    cout << "Specialty: ";
+    cin.ignore();
+    getline(cin, specialty);
+
+    switch (whatIs)
     {
     case 1:
-        int id;
-        cin >> id;
-        // falta os cins
+    {
+        int securityLevel;
 
-        //verifica se no map tem o ID passado
-        for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
-        {
-            if (it->first == 1 /*id*/)
-            {
-                cout << " já existe esse id";
-                break;
-            }
-        }
+        cout << "Security Level: ";
+        cin >> securityLevel;
         //cria um worker temp
-        Worker *worker = new Veterinary(id, "a", "a", "b", 2, "c", '\0', "a", "b");
+
+        Worker *worker = new Caregiver(id, function, name, cpf, age, bloodType, factorRh, specialty, securityLevel);
 
         //adiciona no map
         workers.insert(std::pair<int, Worker *>(1, worker));
 
-        //salva no arquivo.
-        std::ofstream outfileWorker;
+        ofstream outfileWorker;
         outfileWorker.open("data/Worker.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
 
         break;
+    }
+    case 2:
+    {
+        string crmv;
+        cout << "Crmv Register: ";
+        cin >> crmv;
+
+        //cria um worker temp
+        Worker *worker = new Veterinary(id, function, name, cpf, age, bloodType, factorRh, specialty, crmv);
+
+        //adiciona no map
+        workers.insert(std::pair<int, Worker *>(1, worker));
+
+        ofstream outfileWorker;
+        outfileWorker.open("data/Worker.csv", std::ios_base::app);
+        outfileWorker << *worker;
+        outfileWorker.close();
+
+        break;
+    }
     }
 }
