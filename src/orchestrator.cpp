@@ -26,12 +26,14 @@ void Orchestrator::menu()
         {
         case 1:
         {
+            loadArchives();
             addWorker();
             break;
         }
         case 7:
         {
             this->loop = false;
+            break;
         }
 
         default:
