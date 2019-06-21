@@ -8,23 +8,66 @@
 
 #include "manipulator.h"
 
-void Manipulator::checkId(int id)
+void Manipulator::loadArchives()
+{
+    ifstream input("./data/Veterinary.csv");
+    Worker *veterinary = new Veterinary();
+    string buff;
+    if (input.is_open())
+    {
+
+        while (getline(input, buff) >> *veterinary)
+        {
+
+            workers.insert(pair<int, Worker *>(veterinary->getId(), veterinary));
+        }
+    }
+    else
+    {
+        cout << endl
+             << "Arquivo não encontrado o Veterinary.csv";
+    }
+    input.close();
+
+    ifstream input2("./data/Caregiver.csv");
+    Worker *caregiver = new Caregiver();
+    string buff2;
+    if (input2.is_open())
+    {
+
+        while (getline(input2, buff2) >> *caregiver)
+        {
+
+            workers.insert(pair<int, Worker *>(caregiver->getId(), caregiver));
+        }
+    }
+    else
+    {
+        cout << endl
+             << "Arquivo não encontrado o Caregiver.csv";
+    }
+    input2.close();
+}
+
+bool Manipulator::checkId(int id)
 {
     //verifica se no map tem o ID passado
     for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
     {
         if (it->first == id)
         {
-            cout << "That ID has been found. Try Again.";
+            cout << "Id Exists. Please choice other." << endl;
+            return false;
         }
     }
+    return true;
 }
 
 void Manipulator::addWorker()
 {
     cout << "Choice One Option: " << endl
-         << "[1] To Register an Veterinary" << endl
-         << "[2] To Register an Caregiver" << endl;
+         << "[1] To Register an Caregiver" << endl
+         << "[2] To Register an Veterinary" << endl;
     int whatIs;
     cin >> whatIs;
 
@@ -37,16 +80,17 @@ void Manipulator::addWorker()
     char factorRh;
     string specialty;
 
-    cout << "[----------------]" << endl;
-    cout << "Choice an ID: ";
-    cin >> id;
-    checkId(id);
+    do
+    {
+        cout << "[----------------]" << endl;
+        cout << "Choice an ID: ";
+        cin >> id;
+    } while (!checkId(id));
 
     cout << "Type the Function: ";
     cin >> function;
 
     cout << "He/She Name: ";
-    cin.ignore();
     getline(cin, name);
 
     cout << "CPF: (000.000.000-00) ";
@@ -69,6 +113,7 @@ void Manipulator::addWorker()
     {
     case 1:
     {
+
         int securityLevel;
 
         cout << "Security Level: ";
@@ -78,10 +123,10 @@ void Manipulator::addWorker()
         Worker *worker = new Caregiver(id, function, name, cpf, age, bloodType, factorRh, specialty, securityLevel);
 
         //adiciona no map
-        workers.insert(std::pair<int, Worker *>(1, worker));
+        workers.insert(pair<int, Worker *>(id, worker));
 
         ofstream outfileWorker;
-        outfileWorker.open("data/Worker.csv", std::ios_base::app);
+        outfileWorker.open("data/Caregiver.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
 
@@ -97,10 +142,10 @@ void Manipulator::addWorker()
         Worker *worker = new Veterinary(id, function, name, cpf, age, bloodType, factorRh, specialty, crmv);
 
         //adiciona no map
-        workers.insert(std::pair<int, Worker *>(1, worker));
+        workers.insert(std::pair<int, Worker *>(id, worker));
 
         ofstream outfileWorker;
-        outfileWorker.open("data/Worker.csv", std::ios_base::app);
+        outfileWorker.open("data/Veterinary.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
 

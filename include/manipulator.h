@@ -50,7 +50,8 @@ protected:
 
     void loadArchives();
 
-    void checkId(int);
+    bool checkId(int);
+    
     void addWorker();
 
     void addAnimal();
