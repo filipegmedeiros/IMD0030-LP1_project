@@ -65,9 +65,9 @@ bool Manipulator::checkId(int id)
 
 void Manipulator::addWorker()
 {
-    cout << "Choice One Option: " << endl
-         << "[1] To Register an Caregiver" << endl
-         << "[2] To Register an Veterinary" << endl;
+    cout << "Choose an option: " << endl
+         << "[1] To register a caregiver" << endl
+         << "[2] To register a veterinary" << endl;
     int whatIs;
     cin >> whatIs;
 
@@ -83,15 +83,12 @@ void Manipulator::addWorker()
     do
     {
         cout << "[----------------]" << endl;
-        cout << "Choice an ID: ";
+        cout << "Choose an ID: ";
         cin >> id;
     } while (!checkId(id));
 
-    cout << "Type the Function: ";
-    cin >> function;
-
     cout << "He/She Name: ";
-    getline(cin, name);
+    cin >> name;
 
     cout << "CPF: (000.000.000-00) ";
     cin >> cpf;
@@ -112,12 +109,13 @@ void Manipulator::addWorker()
     switch (whatIs)
     {
     case 1:
-    {
-
+    {    
         int securityLevel;
-
         cout << "Security Level: ";
         cin >> securityLevel;
+       
+        function = "caregiver";
+
         //cria um worker temp
 
         Worker *worker = new Caregiver(id, function, name, cpf, age, bloodType, factorRh, specialty, securityLevel);
@@ -130,6 +128,8 @@ void Manipulator::addWorker()
         outfileWorker << *worker;
         outfileWorker.close();
 
+        delete worker;
+
         break;
     }
     case 2:
@@ -137,6 +137,12 @@ void Manipulator::addWorker()
         string crmv;
         cout << "Crmv Register: ";
         cin >> crmv;
+
+        int securityLevel;
+        cout << "Security Level: ";
+        cin >> securityLevel;
+
+        function = "veterinary";
 
         //cria um worker temp
         Worker *worker = new Veterinary(id, function, name, cpf, age, bloodType, factorRh, specialty, crmv);
@@ -149,7 +155,146 @@ void Manipulator::addWorker()
         outfileWorker << *worker;
         outfileWorker.close();
 
+        delete worker;
+
         break;
     }
+    }
+}
+//Incompleto, falta apenas inserir no arquivo
+void Manipulator::addAnimal()
+{
+    cout << "Choose an option: " << endl
+         << "[1] To register an amphibian" << endl
+         << "[2] To register a reptile" << endl
+         << "[3] To register a bird" << endl
+         << "[4] To register a mammal" << endl;
+    int whatIs;
+    cin >> whatIs;
+
+    int id;
+    string aniClass;
+    string name_species;
+    string sciname;
+    char gender;
+    double size;
+    string diet;
+    int vet;
+    int carer;
+    string nickname;
+
+    do
+    {
+        cout << "[----------------]" << endl;
+        cout << "Choose an ID: ";
+        cin >> id;
+    } while (!checkId(id));
+
+    cout << "Species name: ";
+    cin >> name_species;
+
+    cout << "Scientific Name: ";
+    cin >> sciname;
+
+    cout << "Gender(M/F): ";
+    cin >> gender;
+
+    cout << "Animal size(double): ";
+    cin >> size;
+
+    cout << "Diet: ";
+    cin >> diet;
+
+    cout << "Associated Veterinary ID(0 = none): ";
+    cin >> vet;
+
+    cout << "Associated Caregiver ID(0 = none): ";
+    cin >> carer;
+
+    cout << "Animal nickname: ";
+    cin >> nickname;
+
+    switch(whatIs)
+    {
+        case 1:
+        {
+            aniClass = "amphibian";
+
+            ofstream outfileAnimal;
+            outfileAnimal.open("data/Animal.csv", std::ios_base::app);
+            outfileAnimal << id << ";" 
+                          << aniClass << ";"
+                          << name_species << ";"
+                          << sciname << ";"
+                          << gender << ";"
+                          << size << ";"
+                          << diet << ";"
+                          << vet << ";"
+                          << carer << ";"
+                          << nickname << ";";
+            outfileAnimal.close();
+            
+            break;
+        }
+        case 2:
+        {
+            aniClass = "reptile";
+
+            ofstream outfileAnimal;
+            outfileAnimal.open("data/Animal.csv", std::ios_base::app);
+            outfileAnimal << id << ";" 
+                          << aniClass << ";"
+                          << name_species << ";"
+                          << sciname << ";"
+                          << gender << ";"
+                          << size << ";"
+                          << diet << ";"
+                          << vet << ";"
+                          << carer << ";"
+                          << nickname << ";";
+            outfileAnimal.close();
+            
+            break;
+        }
+        case 3:
+        {
+            aniClass = "bird";
+
+            ofstream outfileAnimal;
+            outfileAnimal.open("data/Animal.csv", std::ios_base::app);
+            outfileAnimal << id << ";" 
+                          << aniClass << ";"
+                          << name_species << ";"
+                          << sciname << ";"
+                          << gender << ";"
+                          << size << ";"
+                          << diet << ";"
+                          << vet << ";"
+                          << carer << ";"
+                          << nickname << ";";
+            outfileAnimal.close();
+            
+            break;
+        }
+        case 4:
+        {
+            aniClass = "mammal";
+
+            ofstream outfileAnimal;
+            outfileAnimal.open("data/Animal.csv", std::ios_base::app);
+            outfileAnimal << id << ";" 
+                          << aniClass << ";"
+                          << name_species << ";"
+                          << sciname << ";"
+                          << gender << ";"
+                          << size << ";"
+                          << diet << ";"
+                          << vet << ";"
+                          << carer << ";"
+                          << nickname << ";";
+            outfileAnimal.close();
+            
+            break;
+        }
     }
 }
