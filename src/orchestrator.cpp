@@ -36,6 +36,11 @@ void Orchestrator::menu()
             addAnimal();
             break;
         }
+        case 4:
+        {
+            removeWorker();
+            break;
+        }
         case 7:
         {
             this->loop = false;

@@ -27,6 +27,9 @@ void Manipulator::loadArchives()
         cout << endl
              << "Arquivo não encontrado o Veterinary.csv";
     }
+
+
+
     input.close();
 
     ifstream input2("./data/Caregiver.csv");
@@ -122,6 +125,7 @@ void Manipulator::addWorker()
 
         //adiciona no map
         workers.insert(pair<int, Worker *>(id, worker));
+
 
         ofstream outfileWorker;
         outfileWorker.open("data/Caregiver.csv", std::ios_base::app);
@@ -295,6 +299,57 @@ void Manipulator::addAnimal()
             outfileAnimal.close();
             
             break;
+        }
+    }
+}
+
+void Manipulator::removeWorker()
+{
+    int id=0;
+    ofstream outfileWorker2;
+   
+    
+
+
+    cout << "Type the Worker's ID:" << endl;
+    cin >> id;
+    
+    //checa se existe um Worker com a ID digitada
+    if((workers.find(id))==workers.end())
+    {
+        cout << "ID inválida." << endl;
+    } 
+    else 
+    {
+        //Se o Worker for um veterinario ele vai atualizar o arquivo Veterinary.csv
+        if((workers[id]->getFunction()).compare("veterinary")==0)
+        {
+            
+            workers.erase(id);
+            outfileWorker2.open("data/Veterinary.csv");
+            
+            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+            {  
+                if ((it->second->getFunction()).compare("veterinary")==0)
+                {
+                    outfileWorker2 << *(it->second);
+                }
+            }
+            outfileWorker2.close();
+        }
+        //Se o Worker for um Caregiver ele vai atualizar o arquivo Caregiver.csv
+        else if((workers[id]->getFunction()).compare("caregiver")==0)
+        {
+            workers.erase(id);
+            outfileWorker2.open("data/Caregiver.csv");
+            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+            {  
+                if ((it->second->getFunction()).compare("caregiver")==0)
+                {
+                    outfileWorker2 << *(it->second);
+                }
+            }
+            outfileWorker2.close();
         }
     }
 }
