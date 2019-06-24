@@ -216,7 +216,7 @@ void Manipulator::addWorker()
     }
 }
 //Incompleto, falta apenas inserir no arquivo
-/* void Manipulator::addAnimal()
+ void Manipulator::addAnimal()
 {
     cout << "Choose an option: " << endl
          << "[1] To register an amphibian" << endl
@@ -487,7 +487,7 @@ void Manipulator::addWorker()
             break;
         }
     }
-} */
+}
 
 //comentei devido a segmentention fault na declaração do iterator it = workers.begin;
 // não faço ideia do pq, tentando ajeitar

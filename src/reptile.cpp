@@ -78,10 +78,11 @@ void Reptile::setPoisonType(string poisonType)
 {
     this->poisonType = poisonType;
 }
-
+/*
 void Reptile::print(ostream &os)
 {
     Animal::print(os);
     os << "É venenoso: " << this->isItPoisonous << endl;
     os << "Tipo do Veneno: " << this->poisonType << endl;
 }
+ */

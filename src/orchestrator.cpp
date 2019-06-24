@@ -34,7 +34,7 @@ void Orchestrator::menu()
         }
         case 2:
         {
-            //addAnimal();
+            addAnimal();
             break;
         }
         case 4:

@@ -93,9 +93,10 @@ void Amphibian::setLastSeed(string lastSeed)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
-void Amphibian::print(ostream &os)
-{
-    Animal::print(os);
-    os << "Número de mudas da pele: " << this->totalSeed << endl;
-    os << "Última Muda: " << this->lastSeed << endl;
-}
+/* void Amphibian::print(ostream &os)
+ *{
+ *   Animal::print(os);
+ *   os << "Número de mudas da pele: " << this->totalSeed << endl;
+ *   os << "Última Muda: " << this->lastSeed << endl;
+ * }
+ */

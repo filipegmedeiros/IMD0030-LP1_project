@@ -23,6 +23,8 @@ using std::ostream;
 
 class nativeAmphibian : public Amphibian, public Native
 {
+private:
+    void print(ostream &os) const;
 
 public:
     //! Construtor e Destrutor
@@ -32,7 +34,7 @@ public:
     ~nativeAmphibian();
 
     //! Sobrecargas dos operadores
-
+    friend istream &operator>>(istream &, nativeAmphibian &);
     friend ostream &operator<<(ostream &, nativeAmphibian &);
 };
 

@@ -60,14 +60,62 @@ exoticBird::~exoticBird()
 {
 }
 
+std::istream &operator>>(std::istream &is, exoticBird &Beast)
+{
+    string buff;
+    getline(is, buff, ';');
+    Beast.id = atoi(buff.c_str());
+    getline(is, buff, ';');
+    Beast.animalClass = buff;
+    getline(is, buff, ';');
+    Beast.scientificName = buff;
+    getline(is, buff, ';');
+    Beast.sex = buff[0];
+    getline(is, buff, ';');
+    Beast.size = atof(buff.c_str());
+    getline(is, buff, ';');
+    Beast.diet = buff;
+    getline(is, buff, ';');
+    Beast.baptismalName = buff;
+    getline(is, buff, ';');
+    //Beast.veterinary = Veterinary.getname();
+    //getline(is, buff, ';');
+    //Beast.caregiver = Caregiver.getname();
+    //getline(is, buff, ';');
+    Beast.beakSize = atof(buff.c_str());
+    getline(is, buff, ';');
+    Beast.handleSpan = atof(buff.c_str());
+    getline(is, buff, ';');
+    Beast.ibamaAuth = buff;
+    getline(is, buff, ';');
+    Beast.birthPlace = buff;
+    return is;
+}
+
+void exoticBird::print(ostream &os) const
+{
+    os << this->id << ";"
+       << this->animalClass << ";"
+       << this->scientificName << ";"
+       << this->sex << ";"
+       << this->size << ";"
+       << this->diet << ";"
+       << this->baptismalName << ";"
+       << this->veterinary << ";"
+       << this->caregiver << ";"
+       << this->beakSize << ";"
+       << this->handleSpan << ";"
+       << this->ibamaAuth << ";"
+       << this->birthPlace << ";" << endl;
+}
+
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
  * @param   Animal Classe Animal
  */
-ostream &operator<<(ostream &os, exoticBird &animal)
+ostream &operator<<(ostream &os, exoticBird &Beast)
 {
-    animal.print(os);
-    animal.printWild(os);
+    Beast.print(os);
     return os;
 }

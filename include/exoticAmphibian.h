@@ -24,6 +24,9 @@ using std::ostream;
 class exoticAmphibian : public Amphibian, public Exotic
 {
 
+private:
+    void print(ostream &os) const;
+
 public:
     //! Construtor e Destrutor
 
@@ -33,6 +36,8 @@ public:
 
     //! Sobrecargas dos operadores
 
+    //void print();
+    friend istream &operator>>(istream &, exoticAmphibian &);
     friend ostream &operator<<(ostream &, exoticAmphibian &);
 };
 

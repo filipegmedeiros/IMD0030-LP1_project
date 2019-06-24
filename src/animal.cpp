@@ -165,25 +165,32 @@ void Animal::setCaregiver(Caregiver *caregiver)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
-void Animal::print(ostream &os)
+ostream &operator<<(ostream &os, const Animal &Beast)
 {
-    os << "ID do animal: " << this->id << endl;
-    os << "Classe do animal: " << this->animalClass << endl;
-    os << "Nome do animal: " << this->baptismalName << endl;
-    os << "Nome cientifico do animal: " << this->scientificName << endl;
-    os << "Sexo do animal: " << this->sex << endl;
-    os << "Dieta do animal: " << this->diet << endl;
-    os << "Veterinário: " << this->veterinary->getName() << endl;
-    os << "Tratador: " << this->caregiver->getName() << endl;
+    Beast.print(os);
+    return os;
+}
+
+void Animal::input(istream &is)
+{
+    is >> this->id;
+    is >> this->animalClass;
+    is >> this->scientificName;
+    is >> this->sex;
+    is >> this->size;
+    is >> this->diet;
+    is >> this->baptismalName;
+    //is >> this->veterinary;
+    //is >> this->caregiver;
 }
 
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
- * @param   Animal Classe Animal
+ * @param   Animal Classe Animalgetline(is, buff, ';');
  */
-ostream &operator<<(ostream &os, Animal &animal)
+istream &operator>>(istream &is, Animal &Beast)
 {
-    animal.print(os);
-    return os;
+    Beast.input(is);
+    return is;
 }
