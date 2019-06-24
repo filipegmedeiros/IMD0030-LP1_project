@@ -24,6 +24,9 @@ using std::ostream;
 class nativeMammal : public Mammal,public Native
 {
 
+private:
+    void print(ostream &os) const;
+
 public:
     //! Construtor e Destrutor
 
@@ -32,7 +35,7 @@ public:
     ~nativeMammal();
 
     //! Sobrecargas dos operadores
-
+    friend istream &operator>>(istream &, nativeMammal &);
     friend ostream &operator<<(ostream &, nativeMammal &);
 };
 

@@ -61,13 +61,66 @@ exoticAmphibian::~exoticAmphibian()
 }
 
 /*!
- * @details	Sobrecarga do operador de impressão <<
- * @param 	os Output stream
- * @param   Animal Classe Animal
+ * @details	Sobrecarga do operador de impressão >>
+ * @param 	is input stream
+ * @param   Animal Classe exoticAmphibian
  */
-ostream &operator<<(ostream &os, exoticAmphibian &animal)
+std::istream &operator>>(std::istream &is, exoticAmphibian &Beast)
 {
-    animal.print(os);
-    animal.printWild(os);
+    string buff;
+    getline(is, buff, ';');
+    Beast.id = atoi(buff.c_str());
+    getline(is, buff, ';');
+    Beast.animalClass = buff;
+    getline(is, buff, ';');
+    Beast.scientificName = buff;
+    getline(is, buff, ';');
+    Beast.sex = buff[0];
+    getline(is, buff, ';');
+    Beast.size = atof(buff.c_str());
+    getline(is, buff, ';');
+    Beast.diet = buff;
+    getline(is, buff, ';');
+    Beast.baptismalName = buff;
+    getline(is, buff, ';');
+    //Beast.veterinary = Veterinary.getname();
+    //getline(is, buff, ';');
+    //Beast.caregiver = Caregiver.getname();
+    //getline(is, buff, ';');
+    Beast.totalSeed = atoi(buff.c_str());
+    getline(is, buff, ';');
+    Beast.lastSeed = buff;
+    getline(is, buff, ';');
+    Beast.ibamaAuth = buff;
+    getline(is, buff, ';');
+    Beast.birthPlace = buff;
+    return is;
+}
+
+void exoticAmphibian::print(ostream &os) const
+{
+    os << this->id << ";"
+       << this->animalClass << ";"
+       << this->scientificName << ";"
+       << this->sex << ";"
+       << this->size << ";"
+       << this->diet << ";"
+       << this->baptismalName << ";"
+       << this->veterinary << ";"
+       << this->caregiver << ";"
+       << this->totalSeed << ";"
+       << this->lastSeed << ";"
+       << this->ibamaAuth << ";"
+       << this->birthPlace << ";" << endl;
+}
+
+/*!
+ * @details Sobrecarga do operador de impressão <<
+ * @param os Output stream
+ * @param Animal Classe exoticAmphibian
+ */
+ostream &operator<<(ostream &os, exoticAmphibian &Beast)
+{
+    Beast.print(os);
     return os;
 }
