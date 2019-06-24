@@ -19,7 +19,8 @@ void Orchestrator::menu()
              << "[4] Remove employee" << endl
              << "[5] Query an animal" << endl
              << "[6] Query Employee" << endl
-             << "[7] Exit" << endl;
+             << "[7] List Workers" << endl
+             << "[8] Exit" << endl;
 
         int choice;
         cin >> choice;
@@ -28,7 +29,6 @@ void Orchestrator::menu()
         {
         case 1:
         {
-            loadArchives();
             addWorker();
             break;
         }
@@ -43,6 +43,11 @@ void Orchestrator::menu()
             break;
         }
         case 7:
+        {
+            listWorkers();
+            break;
+        }
+        case 8:
         {
             this->loop = false;
             break;
