@@ -78,10 +78,10 @@ std::istream &operator>>(std::istream &is, exoticBird &Beast)
     getline(is, buff, ';');
     Beast.baptismalName = buff;
     getline(is, buff, ';');
-    //Beast.veterinary = Veterinary.getname();
-    //getline(is, buff, ';');
-    //Beast.caregiver = Caregiver.getname();
-    //getline(is, buff, ';');
+    Beast.getVeterinary()->getName();
+    getline(is, buff, ';');
+    Beast.getCaregiver()->getName();
+    getline(is, buff, ';');
     Beast.beakSize = atof(buff.c_str());
     getline(is, buff, ';');
     Beast.handleSpan = atof(buff.c_str());
