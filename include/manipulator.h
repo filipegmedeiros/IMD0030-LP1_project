@@ -42,6 +42,8 @@ using std::ifstream;
 using std::ofstream;
 using std::ostream;
 
+#include <limits>
+
 class Manipulator
 {
 protected:
