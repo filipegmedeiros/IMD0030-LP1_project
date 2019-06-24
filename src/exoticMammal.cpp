@@ -77,10 +77,10 @@ std::istream &operator>>(std::istream &is, exoticMammal &Beast)
     getline(is, buff, ';');
     Beast.baptismalName = buff;
     getline(is, buff, ';');
-    //Beast.veterinary = Veterinary.getname();
-    //getline(is, buff, ';');
-    //Beast.caregiver = Caregiver.getname();
-    //getline(is, buff, ';');
+    Beast.getVeterinary()->getName();
+    getline(is, buff, ';');
+    Beast.getCaregiver()->getName();
+    getline(is, buff, ';');
     Beast.furColor= buff;
     getline(is, buff, ';');
     Beast.ibamaAuth = buff;
