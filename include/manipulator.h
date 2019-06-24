@@ -50,6 +50,7 @@ protected:
     map<int, Animal *> animals;
     map<int, Worker *> workers;
 
+    const vector<string> separate(const string s, const char c);
     void loadArchives();
 
     bool checkId(int);
@@ -65,6 +66,7 @@ protected:
 
     void removeAnimal();
     void removeWorker();
+    void listWorkers();
 
 public:
 };

@@ -9,30 +9,97 @@
 #include "manipulator.h"
 #include <sstream>
 
+
+
+const vector<string> Manipulator::separate(const string s, const char c){
+		
+		string buff{""};
+		vector<string> v;
+		
+		for(auto n:s)
+		{
+			if(n != c) buff+=n; else
+			if(n == c) { v.push_back(buff); buff = ""; }
+		}
+		if(buff != "") { v.push_back(buff); buff = ""; }
+		
+		return v;
+}
+
 void Manipulator::loadArchives()
 {
-    ifstream input("./data/Veterinary.csv");
-    Worker *veterinary = new Veterinary;
-    string buff;
-/*     std::stringstream ss;
-    ss.clear();
-    ss.str(buff);
-    ss >> buff;
-    cout << buff << endl; */
-    while (getline(input, buff) >> *veterinary)
-    /* while (input >> *veterinary) */
-    {
+ifstream fileVeterinary("./data/Veterinary.csv", std::ios::in);
+ifstream fileCaregiver("./data/Caregiver.csv", std::ios::in);
+    string str;
+    vector<string> v;
 
-        cout << "Entra aqui?";
-        workers.insert(pair<int, Worker *>(veterinary->getId(), veterinary));
+    if(fileVeterinary){
+        while(!fileVeterinary.eof()){
+            getline(fileVeterinary, str);
+            if(str == "") continue;
+            v = separate(str,';');
+           
+            
+            if(v[1] == "veterinary")
+            {
+                workers.insert( pair<int, Worker*>(stoi(v[0]), new Veterinary(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], v[8])));
+            }
+            
+
+            v.clear();
+        }
     }
+        fileVeterinary.close();
+        if(fileCaregiver)
+        {
+            while(!fileCaregiver.eof()){
+                getline(fileCaregiver, str);
+                if(str == "") continue;
+                v = separate(str,';');
+            
+                    if(v[1] == "caregiver")
+                    {
+                        workers.insert( pair<int, Worker*>(stoi(v[0]), new Caregiver(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], stoi(v[8]))));
+                    }
+                v.clear();
+            }
+            fileCaregiver.close();
+        }
+        else
+        {
+            cout << "Files empty." << endl;
+        }
+  
 
-    cout << "-----------------------Veterinarios-----------------" << endl;
-    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
+}
+
+void Manipulator::listWorkers()
+{
+
+    cout << "-----------------------Workers---------------------" << endl;
+    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it){
         cout << "ID: " << it->first << endl
-             << "Funcionario: " << *(it->second) << endl;
+             << "Function: " << it->second->getFunction() << endl
+             << "Name: " << it->second->getName() << endl
+             << "CPF: " << it->second->getCpf() << endl
+             << "Age: " << it->second->getAge() << endl
+             << "Blood Type: " << it->second->getBloodType() << endl
+             << "RH factor: " << it->second->getFactorRh() << endl
+             << "Specialty " << it->second->getSpecialty() << endl;
+             if(((it->second)->getFunction()).compare("veterinary")==0)
+             {
+                 cout << "CRMV: " << ((Veterinary*)(it->second))->getCrmv() << endl
+                        << "----------------------------------------------------" << endl;
+             }
+             else if(((it->second)->getFunction()).compare("caregiver")==0)
+             {
+                cout << "Security Level: " << ((Caregiver*)(it->second))->getSecurityLevel() << endl
+                    << "----------------------------------------------------" << endl; 
+             }
+             
+    }
     cout << "----------------------------------------------------" << endl;
-
+    
 }
 
 bool Manipulator::checkId(int id)
@@ -42,7 +109,7 @@ bool Manipulator::checkId(int id)
     {
         if (it->first == id)
         {
-            cout << "Id Exists. Please choice other." << endl;
+            cout << "Id Exists. Please choose another." << endl;
             return false;
         }
     }
@@ -431,7 +498,6 @@ void Manipulator::removeWorker()
 
     cout << "Type the Worker's ID:" << endl;
     cin >> id;
-
     //checa se existe um Worker com a ID digitada
     if ((workers.find(id)) == workers.end())
     {
