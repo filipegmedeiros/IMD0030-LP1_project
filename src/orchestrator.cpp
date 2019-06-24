@@ -8,6 +8,7 @@ Orchestrator::Orchestrator()
 
 void Orchestrator::menu()
 {
+    loadArchives();
     while (this->loop)
     {
         cout << "Enter a matching number:" << endl
@@ -26,13 +27,11 @@ void Orchestrator::menu()
         {
         case 1:
         {
-            loadArchives();
             addWorker();
             break;
         }
         case 2:
         {
-            loadArchives();
             addAnimal();
             break;
         }
