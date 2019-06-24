@@ -24,9 +24,8 @@ Caregiver::Caregiver()
     : Worker()
 
 {
-	this->securityLevel = 0;
-	this->specialty = "Caregiver";
-
+  this->securityLevel = 0;
+  this->specialty = "Caregiver";
 }
 
 /*!
@@ -43,12 +42,12 @@ Caregiver::Caregiver()
  *	@param	securityLevel	????????????????
  */
 Caregiver::Caregiver(int id, string function,
-					 string name, string cpf, short int age,
-					 string bloodType, char factorRh, string Specialty, int securityLevel)
+                     string name, string cpf, short int age,
+                     string bloodType, char factorRh, string Specialty, int securityLevel)
 
-	: Worker(id, function, name, cpf, age, bloodType,
-			 factorRh, Specialty),
-	  securityLevel(securityLevel)
+    : Worker(id, function, name, cpf, age, bloodType,
+             factorRh, Specialty),
+      securityLevel(securityLevel)
 
 {
 }
@@ -65,7 +64,7 @@ Caregiver::~Caregiver()
 /*!	@return	securityLevel */
 int Caregiver::getSecurityLevel()
 {
-	return securityLevel;
+  return securityLevel;
 }
 
 //! Metodos Setters
@@ -73,22 +72,60 @@ int Caregiver::getSecurityLevel()
 /*!	@param	securityLevel	securityLevel */
 void Caregiver::setSecurityLevel(int securityLevel)
 {
-	this->securityLevel = securityLevel;
+  this->securityLevel = securityLevel;
 }
 
 void Caregiver::print()
 {
-	cout << securityLevel;
+  cout << securityLevel;
+}
+/*!
+ * @details	Sobrecarga do operador de impressão >>
+ * @param 	is input stream
+ * @param   Person Classe Caregiver
+ */
+std::istream &operator>>(std::istream &is, Caregiver &Person)
+{
+  string buff;
+  getline(is, buff, ';');
+  Person.id = atoi(buff.c_str());
+  getline(is, buff, ';');
+  Person.function = buff;
+  getline(is, buff, ';');
+  Person.name = buff;
+  getline(is, buff, ';');
+  Person.cpf = buff;
+  getline(is, buff, ';');
+  Person.age = atoi(buff.c_str());
+  getline(is, buff, ';');
+  Person.bloodType = buff;
+  getline(is, buff, ';');
+  Person.factorRh = buff[0];
+  getline(is, buff);
+  Person.securityLevel = atoi(buff.c_str());
+  return is;
+}
+
+void Caregiver::print(ostream &os) const
+{
+  os << this->id << ";"
+     << this->function << ";"
+     << this->name << ";"
+     << this->cpf << ";"
+     << this->age << ";"
+     << this->bloodType << ";"
+     << this->factorRh << ";"
+     << this->specialty << ";"
+     << this->securityLevel << ";" << endl;
 }
 
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
- * @param   Person Classe Caregiver
+ * @param   Person Classe Veterinary
  */
-
-ostream &operator<<(ostream &os, Caregiver &care)
+ostream &operator<<(ostream &os, Caregiver &Person)
 {
-  care.print(os);
+  Person.print(os);
   return os;
 }

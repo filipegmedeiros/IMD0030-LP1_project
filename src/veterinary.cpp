@@ -25,7 +25,7 @@ Veterinary::Veterinary()
 
 {
   this->crmv = "crmv";
-  this->specialty="Veterinary";
+  this->specialty = "Veterinary";
 }
 
 /*!
@@ -41,7 +41,7 @@ Veterinary::Veterinary()
  *	@param	specialty	Especialidade do funcionário. 
  *  @param  crmv      Número de Identificação CRMV.
  */
- Veterinary::Veterinary(int id, string function,
+Veterinary::Veterinary(int id, string function,
                        string name, string cpf, short int age,
                        string bloodType, char factorRh, string specialty, string crmv)
 
@@ -80,15 +80,55 @@ void Veterinary::print()
   cout << crmv;
 }
 
+/*!
+ * @details	Sobrecarga do operador de impressão >>
+ * @param 	is input stream
+ * @param   Person Classe Veterinary
+ */
+
+std::istream &operator>>(std::istream &is, Veterinary &Person)
+{
+  string buff;
+  getline(is, buff, ';');
+  Person.id = atoi(buff.c_str());
+  getline(is, buff, ';');
+  Person.function = buff;
+  getline(is, buff, ';');
+  Person.name = buff;
+  getline(is, buff, ';');
+  Person.cpf = buff;
+  getline(is, buff, ';');
+  Person.age = atoi(buff.c_str());
+  getline(is, buff, ';');
+  Person.bloodType = buff;
+  getline(is, buff, ';');
+  Person.factorRh = buff[0];
+  getline(is, buff);
+  Person.specialty = buff;
+  getline(is, buff);
+  return is;
+}
+
+void Veterinary::print(ostream &os) const
+{
+  os << this->id << ";"
+     << this->function << ";"
+     << this->name << ";"
+     << this->cpf << ";"
+     << this->age << ";"
+     << this->bloodType << ";"
+     << this->factorRh << ";"
+     << this->specialty << ";"
+     << this->crmv << ";" << endl;
+}
 
 /*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
  * @param   Person Classe Veterinary
  */
-
-ostream &operator<<(ostream &os, Veterinary &vet)
+ostream &operator<<(ostream &os, Veterinary &Person)
 {
-  vet.print(os);
+  Person.print(os);
   return os;
 }

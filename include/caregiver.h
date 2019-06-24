@@ -17,9 +17,9 @@
 using std::string;
 
 #include <iostream>
+using std::endl;
 using std::istream;
 using std::ostream;
-using std::endl;
 
 /*!
  *	@class		Caregiver caregiver.h
@@ -32,16 +32,8 @@ class Caregiver : public Worker
 
 private:
   int securityLevel;
-  ostream& print(ostream& os)const{
-    return os << id << ";"
-              << name << ";"
-              << cpf << ";"
-              << age << ";"
-              << bloodType << ";"
-              << factorRh << ";"
-              << specialty << ";" 
-              << securityLevel << ";" << endl;
-  }
+  void print(ostream &os) const;
+
 public:
   //! Construtor e Destrutor
   Caregiver();

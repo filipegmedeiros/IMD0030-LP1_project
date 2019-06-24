@@ -17,9 +17,9 @@
 using std::string;
 
 #include <iostream>
+using std::endl;
 using std::istream;
 using std::ostream;
-using std::endl;
 
 /*!
  *	@class		Veterinary veterinary.h
@@ -31,18 +31,8 @@ class Veterinary : public Worker
 {
 
 private:
-string crmv;
-  ostream& print(ostream& os)const{
-    return os << id << ";"
-              << function << ";"
-              << name << ";"
-              << cpf << ";"
-              << age << ";"
-              << bloodType << ";"
-              << factorRh << ";"
-              << specialty << ";" 
-              << crmv << ";" << endl;
-  }
+  string crmv;
+  void print(ostream &os) const;
 
 public:
   //! Construtor e Destrutor
