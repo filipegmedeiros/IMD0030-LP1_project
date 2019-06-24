@@ -70,8 +70,10 @@ void Mammal::setFurColor(string furColor)
  * dessa forma, conseguimos passar um stream de saida com as informações bases para a filha.
  * @param 	os Output stream
  */
+/*
 void Mammal::print(ostream &os)
 {
     Animal::print(os);
     os << "Cor do Pelo: " << this->furColor << endl;
 }
+ */

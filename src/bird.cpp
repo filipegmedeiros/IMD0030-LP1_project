@@ -78,10 +78,11 @@ void Bird::setHandleSpan(double handleSpan)
 {
     this->handleSpan = handleSpan;
 }
-
+/* 
 void Bird::print(ostream &os)
 {
     Animal::print(os);
     os << "Tamanho do Bico: " << this->baptismalName << endl;
     os << "Tamanho da Enveradura: " << this->beakSize << endl;
 }
+*/

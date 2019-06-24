@@ -46,7 +46,7 @@ public:
 
   //! Sobrecargas dos operadores
 
-  void print(ostream &);
+  //void print(ostream &);
 };
 
 #endif

@@ -29,7 +29,8 @@ class Animal
 {
 
 protected:
-	virtual void print(ostream &) = 0;
+	virtual void print(ostream &) const = 0;
+	virtual void input(istream &);
 	int id;
 	string animalClass;
 	string scientificName;
@@ -73,8 +74,9 @@ public:
 	void setCaregiver(Caregiver *);
 
 	//! Sobrecargas dos operadores
-
-	friend ostream &operator<<(ostream &, Animal &);
+	virtual void print() = 0;
+	friend istream &operator>>(istream &, Animal &);
+	friend ostream &operator<<(ostream &os, const Animal &Beast);
 };
 
 #endif

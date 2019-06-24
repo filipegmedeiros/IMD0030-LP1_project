@@ -61,13 +61,66 @@ nativeAmphibian::~nativeAmphibian()
 }
 
 /*!
+ * @details	Sobrecarga do operador de impressão >>
+ * @param 	is input stream
+ * @param   Animal Classe nativeAmphibian
+ */
+std::istream &operator>>(std::istream &is, nativeAmphibian &Beast)
+{
+    string buff;
+    getline(is, buff, ';');
+    Beast.id = atoi(buff.c_str());
+    getline(is, buff, ';');
+    Beast.animalClass = buff;
+    getline(is, buff, ';');
+    Beast.scientificName = buff;
+    getline(is, buff, ';');
+    Beast.sex = buff[0];
+    getline(is, buff, ';');
+    Beast.size = atof(buff.c_str());
+    getline(is, buff, ';');
+    Beast.diet = buff;
+    getline(is, buff, ';');
+    Beast.baptismalName = buff;
+    getline(is, buff, ';');
+    //Beast.veterinary = Veterinary.getname();
+    //getline(is, buff, ';');
+    //Beast.caregiver = Caregiver.getname();
+    //getline(is, buff, ';');
+    Beast.totalSeed = atoi(buff.c_str());
+    getline(is, buff, ';');
+    Beast.lastSeed = buff;
+    getline(is, buff, ';');
+    Beast.ibamaAuth = buff;
+    getline(is, buff, ';');
+    Beast.UFplace = buff;
+    return is;
+}
+
+void nativeAmphibian::print(ostream &os) const
+{
+    os << this->id << ";"
+       << this->animalClass << ";"
+       << this->scientificName << ";"
+       << this->sex << ";"
+       << this->size << ";"
+       << this->diet << ";"
+       << this->baptismalName << ";"
+       << this->veterinary << ";"
+       << this->caregiver << ";"
+       << this->totalSeed << ";"
+       << this->lastSeed << ";"
+       << this->ibamaAuth << ";"
+       << this->UFplace << ";" << endl;
+}
+
+/*!
  * @details	Sobrecarga do operador de impressão <<
  * @param 	os Output stream
- * @param   Animal Classe Animal
+ * @param   Animal Classe nativeAmphibian
  */
-ostream &operator<<(ostream &os, nativeAmphibian &animal)
+ostream &operator<<(ostream &os, nativeAmphibian &Beast)
 {
-    animal.print(os);
-    animal.printWild(os);
+    Beast.print(os);
     return os;
 }
