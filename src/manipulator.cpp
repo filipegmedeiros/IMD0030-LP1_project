@@ -7,50 +7,32 @@
  */
 
 #include "manipulator.h"
-
+#include <sstream>
 
 void Manipulator::loadArchives()
 {
     ifstream input("./data/Veterinary.csv");
-    Worker *veterinary = new Veterinary();
+    Worker *veterinary = new Veterinary;
     string buff;
-    if (input.is_open())
+/*     std::stringstream ss;
+    ss.clear();
+    ss.str(buff);
+    ss >> buff;
+    cout << buff << endl; */
+    while (getline(input, buff) >> *veterinary)
+    /* while (input >> *veterinary) */
     {
 
-        while (getline(input, buff) >> *veterinary)
-        {
-
-            workers.insert(pair<int, Worker *>(veterinary->getId(), veterinary));
-        }
-    }
-    else
-    {
-        cout << endl
-             << "Arquivo não encontrado o Veterinary.csv";
+        cout << "Entra aqui?";
+        workers.insert(pair<int, Worker *>(veterinary->getId(), veterinary));
     }
 
+    cout << "-----------------------Veterinarios-----------------" << endl;
+    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
+        cout << "ID: " << it->first << endl
+             << "Funcionario: " << *(it->second) << endl;
+    cout << "----------------------------------------------------" << endl;
 
-
-    input.close();
-
-    ifstream input2("./data/Caregiver.csv");
-    Worker *caregiver = new Caregiver();
-    string buff2;
-    if (input2.is_open())
-    {
-
-        while (getline(input2, buff2) >> *caregiver)
-        {
-
-            workers.insert(pair<int, Worker *>(caregiver->getId(), caregiver));
-        }
-    }
-    else
-    {
-        cout << endl
-             << "Arquivo não encontrado o Caregiver.csv";
-    }
-    input2.close();
 }
 
 bool Manipulator::checkId(int id)
@@ -67,8 +49,6 @@ bool Manipulator::checkId(int id)
     return true;
 }
 
-
-
 void Manipulator::addWorker()
 {
     cout << "Choose an option: " << endl
@@ -78,11 +58,11 @@ void Manipulator::addWorker()
     cin >> whatIs;
 
     //esse bloco impede um loop infinito se o usuário dititar um tipo diferente de int
-    while(cin.fail())
+    while (cin.fail())
     {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout<< "Error in entry. Type a number."<<endl;
+        cout << "Error in entry. Type a number." << endl;
         cin >> whatIs;
     }
 
@@ -94,7 +74,6 @@ void Manipulator::addWorker()
     string bloodType;
     char factorRh;
     string specialty;
-    
 
     do
     {
@@ -125,11 +104,11 @@ void Manipulator::addWorker()
     switch (whatIs)
     {
     case 1:
-    {    
+    {
         int securityLevel;
         cout << "Security Level: ";
         cin >> securityLevel;
-       
+
         function = "caregiver";
 
         //cria um worker temp
@@ -139,13 +118,10 @@ void Manipulator::addWorker()
         //adiciona no map
         workers.insert(pair<int, Worker *>(id, worker));
 
-
         ofstream outfileWorker;
         outfileWorker.open("./data/Caregiver.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
-
-        delete worker;
 
         break;
     }
@@ -168,14 +144,12 @@ void Manipulator::addWorker()
         outfileWorker << *worker;
         outfileWorker.close();
 
-        delete worker;
-
         break;
     }
     }
 }
 //Incompleto, falta apenas inserir no arquivo
-void Manipulator::addAnimal()
+/* void Manipulator::addAnimal()
 {
     cout << "Choose an option: " << endl
          << "[1] To register an amphibian" << endl
@@ -446,56 +420,54 @@ void Manipulator::addAnimal()
             break;
         }
     }
-}
+} */
 
 //comentei devido a segmentention fault na declaração do iterator it = workers.begin;
 // não faço ideia do pq, tentando ajeitar
 void Manipulator::removeWorker()
 {
-    // int id=0;
-    // ofstream outfileWorker2;
-   
-    // cout << "Type the Worker's ID:" << endl;
-    // cin >> id;
-    
-    // //checa se existe um Worker com a ID digitada
-    // if((workers.find(id))==workers.end())
-    // {
-    //     cout << "ID inválida." << endl;
-    // } 
-    // else 
-    // {
-    //     //Se o Worker for um veterinario ele vai atualizar o arquivo Veterinary.csv
-    //     if((workers[id]->getFunction()).compare("veterinary")==0)
-    //     {
-            
-    //         workers.erase(id);
-    //         delete workers[id];
-    //         outfileWorker2.open("./data/Veterinary.csv");
-            
-    //         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
-    //         {  
-    //             if ((it->second->getFunction()).compare("veterinary")==0)
-    //             {
-    //                 outfileWorker2 << *(it->second);
-    //             }
-    //         }
-    //         outfileWorker2.close();
-    //     }
-    //     //Se o Worker for um Caregiver ele vai atualizar o arquivo Caregiver.csv
-    //     else if((workers[id]->getFunction()).compare("caregiver")==0)
-    //     {
-    //         workers.erase(id);
-    //         outfileWorker2.open("./data/Caregiver.csv");
-    //         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
-    //         {  
-    //             if ((it->second->getFunction()).compare("caregiver")==0)
-    //             {
-    //                 outfileWorker2 << *(it->second);
-    //             }
-    //         }
-    //         outfileWorker2.close();
-    //     }
-    // }
-}
+    int id = 0;
+    ofstream outfileWorker2;
 
+    cout << "Type the Worker's ID:" << endl;
+    cin >> id;
+
+    //checa se existe um Worker com a ID digitada
+    if ((workers.find(id)) == workers.end())
+    {
+        cout << "ID inválida." << endl;
+    }
+    else
+    {
+        //Se o Worker for um veterinario ele vai atualizar o arquivo Veterinary.csv
+        if ((workers[id]->getFunction()).compare("veterinary") == 0)
+        {
+
+            workers.erase(id);
+            outfileWorker2.open("data/Veterinary.csv");
+
+            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+            {
+                if ((it->second->getFunction()).compare("veterinary") == 0)
+                {
+                    outfileWorker2 << *(it->second);
+                }
+            }
+            outfileWorker2.close();
+        }
+        //Se o Worker for um Caregiver ele vai atualizar o arquivo Caregiver.csv
+        else if ((workers[id]->getFunction()).compare("caregiver") == 0)
+        {
+            workers.erase(id);
+            outfileWorker2.open("data/Caregiver.csv");
+            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+            {
+                if ((it->second->getFunction()).compare("caregiver") == 0)
+                {
+                    outfileWorker2 << *(it->second);
+                }
+            }
+            outfileWorker2.close();
+        }
+    }
+}

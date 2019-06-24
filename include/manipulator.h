@@ -53,7 +53,7 @@ protected:
     void loadArchives();
 
     bool checkId(int);
-    
+
     void addWorker();
 
     void addAnimal();

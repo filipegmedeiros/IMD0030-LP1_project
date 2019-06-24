@@ -28,7 +28,7 @@ using std::ostream;
 class Worker
 {
 protected:
-	virtual ostream &print(ostream &) const = 0;
+	virtual void print(ostream &) const = 0;
 	virtual void input(istream &);
 	int id;
 	string function;
@@ -71,10 +71,7 @@ public:
 	//! Sobrecargas dos operadores
 	virtual void print() = 0;
 	friend istream &operator>>(istream &, Worker &);
-	friend ostream &operator<<(ostream &os, const Worker &Person)
-	{
-		return Person.print(os);
-	};
+	friend ostream &operator<<(ostream &os, const Worker &Person);
 };
 
 #endif
