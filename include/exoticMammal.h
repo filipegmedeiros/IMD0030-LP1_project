@@ -35,6 +35,7 @@ public:
     ~exoticMammal();
 
     //! Sobrecargas dos operadores
+    void print();
     friend istream &operator>>(istream &, exoticMammal &);
     friend ostream &operator<<(ostream &, exoticMammal &);
 };

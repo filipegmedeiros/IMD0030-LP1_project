@@ -36,7 +36,7 @@ public:
 
     //! Sobrecargas dos operadores
 
-    //void print();
+    void print();
     friend istream &operator>>(istream &, exoticAmphibian &);
     friend ostream &operator<<(ostream &, exoticAmphibian &);
 };
