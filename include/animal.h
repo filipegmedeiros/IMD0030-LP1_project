@@ -74,7 +74,6 @@ public:
 	void setCaregiver(Caregiver *);
 
 	//! Sobrecargas dos operadores
-	virtual void print() = 0;
 	friend istream &operator>>(istream &, Animal &);
 	friend ostream &operator<<(ostream &os, const Animal &Beast);
 };
