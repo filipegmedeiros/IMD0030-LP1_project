@@ -66,7 +66,9 @@ protected:
 
     void removeAnimal();
     void removeWorker();
+
     void listWorkers();
+    Worker* findWorker(int, int);
 
 public:
 };
