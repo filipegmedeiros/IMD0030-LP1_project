@@ -9,75 +9,103 @@
 #include "manipulator.h"
 #include <sstream>
 
+const vector<string> Manipulator::separate(const string s, const char c)
+{
 
+    string buff{""};
+    vector<string> v;
 
-const vector<string> Manipulator::separate(const string s, const char c){
-		
-		string buff{""};
-		vector<string> v;
-		
-		for(auto n:s)
-		{
-			if(n != c) buff+=n; else
-			if(n == c) { v.push_back(buff); buff = ""; }
-		}
-		if(buff != "") { v.push_back(buff); buff = ""; }
-		
-		return v;
+    for (auto n : s)
+    {
+        if (n != c)
+            buff += n;
+        else if (n == c)
+        {
+            v.push_back(buff);
+            buff = "";
+        }
+    }
+    if (buff != "")
+    {
+        v.push_back(buff);
+        buff = "";
+    }
+
+    return v;
 }
 
 void Manipulator::loadArchives()
 {
-ifstream fileVeterinary("./data/Veterinary.csv", std::ios::in);
-ifstream fileCaregiver("./data/Caregiver.csv", std::ios::in);
+    ifstream fileVeterinary("./data/Veterinary.csv", std::ios::in);
+    ifstream fileCaregiver("./data/Caregiver.csv", std::ios::in);
+    ifstream fileAnimal("./data/Animal.csv", std::ios::in);
     string str;
     vector<string> v;
 
-    if(fileVeterinary){
-        while(!fileVeterinary.eof()){
+    if (fileVeterinary)
+    {
+        while (!fileVeterinary.eof())
+        {
             getline(fileVeterinary, str);
-            if(str == "") continue;
-            v = separate(str,';');
-           
-            
-            if(v[1] == "veterinary")
+            if (str == "")
+                continue;
+            v = separate(str, ';');
+
+            if (v[1] == "veterinary")
             {
-                workers.insert( pair<int, Worker*>(stoi(v[0]), new Veterinary(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], v[8])));
+                workers.insert(pair<int, Worker *>(stoi(v[0]), new Veterinary(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], v[8])));
             }
-            
 
             v.clear();
         }
     }
-        fileVeterinary.close();
-        if(fileCaregiver)
+    fileVeterinary.close();
+    if (fileCaregiver)
+    {
+        while (!fileCaregiver.eof())
         {
-            while(!fileCaregiver.eof()){
-                getline(fileCaregiver, str);
-                if(str == "") continue;
-                v = separate(str,';');
-            
-                    if(v[1] == "caregiver")
-                    {
-                        workers.insert( pair<int, Worker*>(stoi(v[0]), new Caregiver(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], stoi(v[8]))));
-                    }
-                v.clear();
-            }
-            fileCaregiver.close();
-        }
-        else
-        {
-            cout << "Files empty." << endl;
-        }
-  
+            getline(fileCaregiver, str);
+            if (str == "")
+                continue;
+            v = separate(str, ';');
 
+            if (v[1] == "caregiver")
+            {
+                workers.insert(pair<int, Worker *>(stoi(v[0]), new Caregiver(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], stoi(v[8]))));
+            }
+            v.clear();
+        }
+        fileCaregiver.close();
+    }
+    if (fileAnimal)
+    {
+        while (!fileAnimal.eof())
+        {
+            getline(fileAnimal, str);
+            if (str == "")
+                continue;
+            v = separate(str, ';');
+
+            if (v[1] == "exotic Bird")
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            v.clear();
+        }
+        fileCaregiver.close();
+    }
+    else
+    {
+        cout << "Files empty." << endl;
+    }
 }
 
 void Manipulator::listWorkers()
 {
 
     cout << "-----------------------Workers---------------------" << endl;
-    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it){
+    for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
+    {
         cout << "ID: " << it->first << endl
              << "Function: " << it->second->getFunction() << endl
              << "Name: " << it->second->getName() << endl
@@ -86,26 +114,38 @@ void Manipulator::listWorkers()
              << "Blood Type: " << it->second->getBloodType() << endl
              << "RH factor: " << it->second->getFactorRh() << endl
              << "Specialty " << it->second->getSpecialty() << endl;
-             if(((it->second)->getFunction()).compare("veterinary")==0)
-             {
-                 cout << "CRMV: " << ((Veterinary*)(it->second))->getCrmv() << endl
-                        << "----------------------------------------------------" << endl;
-             }
-             else if(((it->second)->getFunction()).compare("caregiver")==0)
-             {
-                cout << "Security Level: " << ((Caregiver*)(it->second))->getSecurityLevel() << endl
-                    << "----------------------------------------------------" << endl; 
-             }
-             
+        if (((it->second)->getFunction()).compare("veterinary") == 0)
+        {
+            cout << "CRMV: " << ((Veterinary *)(it->second))->getCrmv() << endl
+                 << "----------------------------------------------------" << endl;
+        }
+        else if (((it->second)->getFunction()).compare("caregiver") == 0)
+        {
+            cout << "Security Level: " << ((Caregiver *)(it->second))->getSecurityLevel() << endl
+                 << "----------------------------------------------------" << endl;
+        }
     }
     cout << "----------------------------------------------------" << endl;
-    
 }
 
 bool Manipulator::checkId(int id)
 {
     //verifica se no map tem o ID passado
     for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+    {
+        if (it->first == id)
+        {
+            cout << "Id Exists. Please choose another." << endl;
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Manipulator::checkIdAnimal(int id)
+{
+    //verifica se no map tem o ID passado
+    for (map<int, Animal *>::iterator it = animals.begin(); it != animals.end(); it++)
     {
         if (it->first == id)
         {
@@ -216,77 +256,47 @@ void Manipulator::addWorker()
     }
 }
 //Incompleto, falta apenas inserir no arquivo
- void Manipulator::addAnimal()
+void Manipulator::addAnimal()
 {
     cout << "Choose an option: " << endl
-         << "[1] To register an amphibian" << endl
-         << "[2] To register a reptile" << endl
-         << "[3] To register a bird" << endl
-         << "[4] To register a mammal" << endl;
+         << "[1] To register an amphibian" << endl;
+
     int whatIs;
     cin >> whatIs;
 
     //esse bloco impede um loop infinito se o usuário dititar um tipo diferente de int
-    while(cin.fail())
+    while (cin.fail())
     {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout<< "Error in entry. Type a number."<<endl;
+        cout << "Error in entry. Type a number." << endl;
         cin >> whatIs;
     }
 
     int animalType;
-    switch(whatIs)
+    switch (whatIs)
     {
-        case 1:
-        {
-            cout << "Choose an option: " << endl
-                << "[1] To register an Exotic Amphibian" << endl
-                << "[2] To register a Native Amphibian" << endl;
-            cin >> animalType;
+    case 1:
+    {
+        cout << "Choose an option: " << endl
+             << "[1] To register an Exotic Amphibian" << endl
+             << "[2] To register a Native Amphibian" << endl;
+        cin >> animalType;
         break;
-        }
-        case 2:
-        {
-            cout << "Choose an option: " << endl
-                << "[1] To register an Exotic Reptile" << endl
-                << "[2] To register a Native Reptile" << endl;
-            cin >> animalType;
-            
-            break;
-        }
-        case 3:
-        {
-            cout << "Choose an option: " << endl
-                << "[1] To register an Exotic Bird" << endl
-                << "[2] To register a Native Bird" << endl;
-            cin >> animalType;
-            break;
-        }
-        case 4:
-        {
-             cout << "Choose an option: " << endl
-                << "[1] To register an Exotic Mammal" << endl
-                << "[2] To register a Native Mammal" << endl;
-            cin >> animalType;
-            break;
-        }
-        default:
-        {
-            cout << "Invalid option."<<endl;
-        }
     }
-    
-    
+    default:
+    {
+        cout << "Invalid option." << endl;
+    }
+    }
 
-    while(cin.fail())
+    while (cin.fail())
     {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout<< "Error in entry. Type a number."<<endl;
+        cout << "Error in entry. Type a number." << endl;
         cin >> animalType;
     }
-    
 
     int id;
     string aniClass;
@@ -300,10 +310,10 @@ void Manipulator::addWorker()
     string nickname;
     int totalSeed;
     string lastSeed;
-    bool isItPoisonous;
+    //bool isItPoisonous;
     string poisonType;
-    double beakSize;
-    double handleSpan;
+    //double beakSize;
+    // double handleSpan;
     string furColor;
     string UFplace;
     string country;
@@ -334,270 +344,71 @@ void Manipulator::addWorker()
     cout << "Associated Veterinary ID ";
     cin >> vetId;
 
-    // //checa se existe um veterinary associado ao id dado e chama findWorker();
-    // Worker *selectedVet = new Veterinary;
-    // if((workers.find(vetId)) == workers.end())
-    // {
-    //     //enquanto o vet não for valido ele vai imprimir uma lista de vets e pedir um id valido
-    //     while((workers.find(vetId)) == workers.end())
-    //     {
-    //         cout << "Veterinary not found. Type a valid ID." << endl
-    //         << "----------------------------------------------------" << endl;
-    //         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
-    //         {
-    //             if(((it->second)->getFunction()).compare("veterinary")==0)
-    //             { 
-    //                 cout << "List of Veterinaries: " << endl
-    //                 << "Veterinary Name: " << it->second->getName() << "ID: " << it->second->getId() << endl;
-                    
-    //             }
-    //         }
-    //         cout << "----------------------------------------------------" << endl;
-    //         cin >> vetId;
-    //     }
-    // }
-    // else
-    // {
-       
-    //     selectedVet = findWorker(vetId, 0);
-    // }
-
-    
-
     cout << "Associated Caregiver ID ";
     cin >> carerId;
-
-    // //checa se existe um caregiver associado ao id dado e chama findWorker();
-    // Worker *selectedCarer = new Caregiver;
-    // if((workers.find(carerId)) == workers.end())
-    //     {
-    //         //enquanto o caregiver não for valido ele vai imprimir uma lista de caregivers e pedir um id valido
-    //         while((workers.find(carerId)) == workers.end())
-    //         {
-    //             cout << "Caregiver not found. Type a valid ID." << endl
-    //             << "----------------------------------------------------" << endl;
-    //             for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
-    //             {
-    //                 if(((it->second)->getFunction()).compare("caregiver")==0)
-    //                 { 
-    //                     cout << "List of Caregivers: " << endl
-    //                     << "Caregiver Name: " << it->second->getName() << "ID: " << it->second->getId() << endl;
-                        
-    //                 }
-    //             }
-    //             cout << "----------------------------------------------------" << endl;
-    //             cin >> carerId;
-    //         }
-    //     }
-    //     else
-    //     {
-    //     selectedCarer = findWorker(carerId, 1); 
-    //     }
-
 
     cout << "Animal nickname: ";
     cin >> nickname;
 
     ofstream outfileAnimal;
     outfileAnimal.open("data/Animals.csv", std::ios_base::app);
-    Veterinary *vet1 = new Veterinary();
-    Caregiver *care1 = new Caregiver();
 
-    switch(whatIs)
-    {  
-        
+    Veterinary *vet1 = findWorkerVet(vetId);
+    Caregiver *care1 = findWorkerCare(carerId);
+
+    switch (whatIs)
+    {
+
+    case 1:
+    {
+
+        cout << "Total seed: (int)" << endl;
+        cin >> totalSeed;
+        cout << "Last seed:" << endl;
+        cin >> lastSeed;
+
+        switch (animalType)
+        {
         case 1:
         {
-          
-            cout << "Total seed: (int)" << endl;
-            cin >> totalSeed;
-            cout << "Last seed:" << endl;
-            cin >> lastSeed;
 
-            switch(animalType)
-            {
-                case 1:
-                {
+            aniClass = "exotic amphibian";
 
-                aniClass = "exotic amphibian";
-                
-                cout << "Country of origin: " << endl;
-                cin >> country;
+            cout << "Country of origin: " << endl;
+            cin >> country;
 
-                cout << "Ibama Authorization " << endl;
-                cin >> ibamaAuth;
+            cout << "Ibama Authorization " << endl;
+            cin >> ibamaAuth;
 
-                
-                Animal *animal1 = new exoticAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, country);
+            Animal *animal1 = new exoticAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, country);
 
-                //adiciona no map
-                animals.insert(std::pair<int, Animal *>(id, animal1));
+            //adiciona no map
+            animals.insert(std::pair<int, Animal *>(id, animal1));
 
-                outfileAnimal << *animal1;
-                outfileAnimal.close();
-                      
+            outfileAnimal << *animal1;
+            outfileAnimal.close();
 
-                break;
-                }
-                case 2:
-                {
-                aniClass = "native amphibian";
-
-                cout << "UF of origin: " << endl;
-                cin >> UFplace;
-
-                cout << "Ibama authuorization " << endl;
-                cin >> ibamaAuth;
-
-                //Animal *animal = new nativeAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, UFplace);
-
-                //adiciona no map
-                
-
-                
-
-                break;
-                }
-            }
             break;
         }
         case 2:
         {
-            cout << "isItPoisonous: (bool)" << endl;
-            cin >> isItPoisonous;
-            cout << "Poison Type:" << endl;
-            cin >> poisonType;
+            aniClass = "native amphibian";
 
-            switch(animalType)
-            {
-                case 1:
-                {
+            cout << "UF of origin: " << endl;
+            cin >> UFplace;
 
-                aniClass = "exotic reptile";
+            cout << "Ibama authuorization " << endl;
+            cin >> ibamaAuth;
 
-                cout << "Country of origin: " << endl;
-                cin >> country;
+            //Animal *animal = new nativeAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, UFplace);
 
-                cout << "Ibama Authorization " << endl;
-                cin >> ibamaAuth;
+            //adiciona no map
 
-                Animal *animal2 = new exoticReptile(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, isItPoisonous , poisonType, ibamaAuth, country);
-                animals.insert(std::pair<int, Animal *>(id, animal2));
-                outfileAnimal << *animal2;
-                outfileAnimal.close();
-
-                //adiciona no map
-               
-                break;
-                }
-                case 2:
-                {
-                aniClass = "native reptile";
-
-                cout << "UF of origin: " << endl;
-                cin >> UFplace;
-
-                cout << "Ibama authuorization " << endl;
-                cin >> ibamaAuth;
-
-                //Animal *animal = new nativeReptile(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, country);
-
-                }
-                break;
-            }
-
-            
-            
             break;
         }
-        case 3:
-        {
-            cout << "Beak Size (double)" << endl;
-            cin >> beakSize;
-            cout << "Handle Span(double)" << endl;
-            cin >> handleSpan;
-           
-            
-            switch(animalType)
-            {
-                case 1:
-                {
-
-                aniClass = "exotic bird";
-
-                cout << "Country of origin: " << endl;
-                cin >> country;
-
-                cout << "Ibama Authorization " << endl;
-                cin >> ibamaAuth;
-
-                Animal *animal3 = new exoticBird(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, beakSize, handleSpan, ibamaAuth, country);
-                
-                //adiciona no map
-                animals.insert(std::pair<int, Animal *>(id, animal3));
-
-                outfileAnimal << *animal3;
-                outfileAnimal.close();
-
-                break;
-                }
-                case 2:
-                {
-                aniClass = "native bird";
-
-                cout << "UF of origin: " << endl;
-                cin >> UFplace;
-
-                cout << "Ibama authuorization " << endl;
-                cin >> ibamaAuth;
-
-                break;
-                }
-            }
-            
-            break;
         }
-        case 4:
-        {
-           
-            cout << "Fur Color: " << endl;
-            cin >> furColor;
-
-            switch(animalType)
-            {
-                case 1:
-                {
-
-                aniClass = "exotic mammal";
-
-                cout << "Country of origin: " << endl;
-                cin >> country;
-
-                cout << "Ibama Authorization " << endl;
-                cin >> ibamaAuth;
-                
-                Animal *animal4 = new exoticMammal(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, furColor, ibamaAuth, country);
-                animals.insert(std::pair<int, Animal *>(id, animal4));
-
-                outfileAnimal << *animal4;
-                outfileAnimal.close();
-                break;
-                }
-                case 2:
-                {
-                aniClass = "native mammal";
-
-                cout << "UF of origin: " << endl;
-                cin >> UFplace;
-
-                cout << "Ibama authuorization " << endl;
-                cin >> ibamaAuth;
-
-                break;
-                }
-            }
-            break;
-        }
+        break;
+    }
     }
 }
 
@@ -650,40 +461,38 @@ void Manipulator::removeWorker()
     }
 }
 
-// Worker* Manipulator::findWorker(int id, int workerType)
-// {
-//     if(workerType == 0){
-//         Worker *person = new Veterinary;
-//         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
-//                 {
-//                     if((((it->second)->getFunction()).compare("veterinary")==0))
-//                     {
-//                         if((it->second->getId())==id)
-//                         {
-//                             person = it->second;
-                           
-//                         }
-                        
+Veterinary *Manipulator::findWorkerVet(int id)
+{
+    try
+    {
+        Veterinary *person = new Veterinary;
+        map<int, Worker *>::iterator it = workers.find(id);
+        if ((it->second)->getFunction().compare("caregiver") == 0)
+        {
+            person = dynamic_cast<Veterinary *>(it->second);
+        }
+        return person;
+    }
+    catch (...)
+    {
+        cout << "Isso não é um Veterinario ou não existe.";
+    }
+}
 
-//                     }
-//                 }
-//     }
-//     else 
-//     {
-//         Worker *person = new Caregiver;
-//         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); ++it)
-//                 {
-//                     if((((it->second)->getFunction()).compare("caregiver")==0))
-//                     {
-//                         if((it->second->getId())==id)
-//                         {
-//                             person = it->second;
-                          
-//                         }
-                        
-
-//                     }
-//                 }
-//     }
-
-// }
+Caregiver *Manipulator::findWorkerCare(int id)
+{
+    try
+    {
+        Caregiver *person = new Caregiver;
+        map<int, Worker *>::iterator it = workers.find(id);
+        if ((it->second)->getFunction().compare("caregiver") == 0)
+        {
+            person = dynamic_cast<Caregiver *>(it->second);
+        }
+        return person;
+    }
+    catch (...)
+    {
+        cout << "Isso não é um Caregiver ou não existe.";
+    }
+}
