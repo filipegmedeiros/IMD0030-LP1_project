@@ -15,6 +15,7 @@ SRCDIR = ./src
 OBJDIR = ./obj
 BINDIR = ./bin
 LIBDIR = ./lib
+EXPORTDIR = ./export
 
 CC = g++
 CFLAGS = -O0 -g -Wall -pedantic -std=c++11 -I$(INCDIR)
@@ -52,7 +53,7 @@ OBJECTS_FILTRED := $(filter-out $(OBJS),$(OBJSPIC))
 export: runExport ##@Compilar Compila o programa export
 
 runExport: makelib
-	$(CC) $(CFLAGS) $(LIBDIR)/$(LIB) $(SRCDIR)/export.cpp $(SRCDIR)/main.cpp -o $(BINDIR)/$(PROGEXPORTED)
+	$(CC) $(CFLAGS) $(LIBDIR)/$(LIB) $(EXPORTDIR)/export.cpp $(EXPORTDIR)/main.cpp -o $(BINDIR)/$(PROGEXPORTED)
 
 makelib: petfera.so ##@Gera a Biblioteca Dincamica.
 
@@ -85,6 +86,8 @@ clean: clean_proj ##@Clean Limpa a pasta obj e bin.
 clean_proj:
 	@echo "Removing OBJDIR..."
 	@$(RM) -rf $(OBJDIR)
+	@echo "Removing EXPORTDIR..."
+	@$(RM) -rf $(EXPORTDIR)
 	@echo "Removing BINDIR..."
 	@$(RM) -rf $(BINDIR)
 	@$(RM) -f $(PROG)
