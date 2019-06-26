@@ -35,6 +35,7 @@ public:
     ~nativeReptile();
 
     //! Sobrecargas dos operadores
+
     friend istream &operator>>(istream &, nativeReptile &);
     friend ostream &operator<<(ostream &, nativeReptile &);
 };

@@ -54,6 +54,7 @@ protected:
     void loadArchives();
 
     bool checkId(int);
+    bool checkIdAnimal(int);
 
     void addWorker();
 
@@ -68,7 +69,9 @@ protected:
     void removeWorker();
 
     void listWorkers();
-    Worker* findWorker(int, int);
+
+    Veterinary *findWorkerVet(int);
+    Caregiver *findWorkerCare(int);
 
 public:
 };
