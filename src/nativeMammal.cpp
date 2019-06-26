@@ -81,7 +81,7 @@ std::istream &operator>>(std::istream &is, nativeMammal &Beast)
     getline(is, buff, ';');
     Beast.getCaregiver()->getName();
     getline(is, buff, ';');
-    Beast.furColor= buff;
+    Beast.furColor = buff;
     getline(is, buff, ';');
     Beast.ibamaAuth = buff;
     getline(is, buff, ';');
@@ -98,8 +98,8 @@ void nativeMammal::print(ostream &os) const
        << this->size << ";"
        << this->diet << ";"
        << this->baptismalName << ";"
-       << this->veterinary << ";"
-       << this->caregiver << ";"
+       << this->veterinary->getName() << ";"
+       << this->caregiver->getName() << ";"
        << this->furColor << ";"
        << this->ibamaAuth << ";"
        << this->UFplace << ";" << endl;

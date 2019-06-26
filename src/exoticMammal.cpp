@@ -98,8 +98,8 @@ void exoticMammal::print(ostream &os) const
        << this->size << ";"
        << this->diet << ";"
        << this->baptismalName << ";"
-       << this->veterinary << ";"
-       << this->caregiver << ";"
+       << this->veterinary->getName() << ";"
+       << this->caregiver->getName() << ";"
        << this->furColor << ";"
        << this->ibamaAuth << ";"
        << this->birthPlace << ";" << endl;
