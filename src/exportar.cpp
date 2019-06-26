@@ -1,24 +1,59 @@
-#include <iostream>
-using namespace std;
 
-#include <sstream>
-#include <fstream>
-
-#include <string>
-using std::string;
-
+#include "exporthelp.h"
 
 int main( int argc, char* const argv[]){
     
+
     string save_caregiver = ".data/Caregiver.csv";
     string save_veterinary = ".data/Veterinary.csv";
     string save_animals = ".data/Animal.csv";
     string save_export = ".data/Export.csv";
 
+    map<int, Animal *> animals;
+    map<int, Worker *> workers;
+
+    string arg_classe;
+    string arg_vet;
+    string arg_carer;
+    /*
     pair<int, string> arg_classe(0,"");
     pair<int, string> arg_vet(0,"");
     pair<int, string> arg_carer(0,"");
+    */
 
+    int c;
+
+    while(optind < argc)
+    {
+        if((c = getopt(argc, argv, "cvt")) != -1)
+        {
+            switch (c)
+            {
+            case 'c':
+                arg_classe = optarg;
+                break;
+
+            case 'v':
+                arg_vet = optarg;
+                break;
+        
+            case 't':
+                arg_carer = optarg;
+                break;
+
+            default:
+                break;
+            }        
+        }
+        else
+        {
+            save_export = optarg;
+        }
+    }
+
+
+
+/*  Tipo antigo de checagem de argumentos.
     if(argc != 2 && argc != 4 && argc != 6 && argc != 8)
     {
         cerr << "ERROR: Incorrect number of arguments!" << endl;
@@ -59,8 +94,14 @@ int main( int argc, char* const argv[]){
                 return -1;
             }
         }
-    }
+    }*/
 
- //to be continued
+    help::loadArchives(workers);
+
+    /* Falta:
+        - Dar load no map de animais
+        - Fazer os filtros
+        - Exportação em sí
+     */
 
 }
