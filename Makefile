@@ -86,8 +86,6 @@ clean: clean_proj ##@Clean Limpa a pasta obj e bin.
 clean_proj:
 	@echo "Removing OBJDIR..."
 	@$(RM) -rf $(OBJDIR)
-	@echo "Removing EXPORTDIR..."
-	@$(RM) -rf $(EXPORTDIR)
 	@echo "Removing BINDIR..."
 	@$(RM) -rf $(BINDIR)
 	@$(RM) -f $(PROG)
