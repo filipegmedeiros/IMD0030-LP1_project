@@ -11,6 +11,7 @@ using namespace std;
 #include <stdio.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <algorithm>
 
 #include "worker.h"
 #include "veterinary.h"
@@ -38,6 +39,8 @@ namespace help {
     extern "C" void loadArchives(map<int, Worker *> &workers);
     extern "C" void loadAnimals(map<int, Animal *> &animals);
     extern "C" const vector<string> separate(const string s, const char c);
+	extern "C" bool filtro(map<int, Worker*> &workers, map<int, Animal *> &animals, string tipo, string valor);
+	extern "C" exportarArquivo(map<int, Worker*> workers, map<int, Animal*> animals, string save_export);
 
 }
 
