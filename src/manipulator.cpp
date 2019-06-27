@@ -36,17 +36,16 @@ const vector<string> Manipulator::separate(const string s, const char c)
 
 void Manipulator::loadArchives()
 {
-    ifstream fileVeterinary("./data/Veterinary.csv", std::ios::in);
-    ifstream fileCaregiver("./data/Caregiver.csv", std::ios::in);
-    ifstream fileAnimal("./data/Animal.csv", std::ios::in);
+    ifstream fileWorkers("./data/Workers.csv", std::ios::in);
+    ifstream fileAnimal("./data/Animals.csv", std::ios::in);
     string str;
     vector<string> v;
 
-    if (fileVeterinary)
+    if (fileWorkers)
     {
-        while (!fileVeterinary.eof())
+        while (!fileWorkers.eof())
         {
-            getline(fileVeterinary, str);
+            getline(fileWorkers, str);
             if (str == "")
                 continue;
             v = separate(str, ';');
@@ -55,28 +54,16 @@ void Manipulator::loadArchives()
             {
                 workers.insert(pair<int, Worker *>(stoi(v[0]), new Veterinary(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], v[8])));
             }
-
-            v.clear();
-        }
-    }
-    fileVeterinary.close();
-    if (fileCaregiver)
-    {
-        while (!fileCaregiver.eof())
-        {
-            getline(fileCaregiver, str);
-            if (str == "")
-                continue;
-            v = separate(str, ';');
-
-            if (v[1] == "caregiver")
+            else if(v[1] == "caregiver")
             {
                 workers.insert(pair<int, Worker *>(stoi(v[0]), new Caregiver(stoi(v[0]), v[1], v[2], v[3], (short)stoi(v[4]), v[5], v[6][0], v[7], stoi(v[8]))));
             }
+
             v.clear();
         }
-        fileCaregiver.close();
     }
+    fileWorkers.close();
+    
     if (fileAnimal)
     {
         while (!fileAnimal.eof())
@@ -86,18 +73,43 @@ void Manipulator::loadArchives()
                 continue;
             v = separate(str, ';');
 
-            if (v[1] == "exotic Bird")
+            if (v[1].compare("exotic amphibian")==0)
+            {
+                animals.insert(pair<int, Animal *>(stoi(v[0]), new exoticAmphibian(stoi(v[0]), v[1], v[2], v[3][0], (double)stoi(v[4]), v[5], v[6], v[7], (v[8]), stoi(v[9]), v[10], v[11], v[12]);
+            }
+            else if(v[1].compare("exotic reptile")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("exotic bird")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("exotic mammal")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("native amphibian")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("native reptile")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("native bird")==0)
+            {
+                animals.insert(pair<int, Animal *>());
+            }
+            else if(v[1].compare("native mammal")==0)
             {
                 animals.insert(pair<int, Animal *>());
             }
             v.clear();
         }
-        fileCaregiver.close();
+        fileAnimal.close();
     }
-    else
-    {
-        cout << "Files empty." << endl;
-    }
+    
 }
 
 void Manipulator::listWorkers()
@@ -226,7 +238,7 @@ void Manipulator::addWorker()
         workers.insert(pair<int, Worker *>(id, worker));
 
         ofstream outfileWorker;
-        outfileWorker.open("./data/Caregiver.csv", std::ios_base::app);
+        outfileWorker.open("./data/Workers.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
 
@@ -247,7 +259,7 @@ void Manipulator::addWorker()
         workers.insert(std::pair<int, Worker *>(id, worker));
 
         ofstream outfileWorker;
-        outfileWorker.open("data/Veterinary.csv", std::ios_base::app);
+        outfileWorker.open("./data/Workers.csv", std::ios_base::app);
         outfileWorker << *worker;
         outfileWorker.close();
 
@@ -462,12 +474,12 @@ void Manipulator::addAnimal()
             cout << "Ibama Authorization " << endl;
             cin >> ibamaAuth;
 
-            Animal *animal1 = new exoticAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, country);
+            Animal *animal = new exoticAmphibian(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, totalSeed, lastSeed, ibamaAuth, country);
 
             //adiciona no map
-            animals.insert(std::pair<int, Animal *>(id, animal1));
+            animals.insert(std::pair<int, Animal *>(id, animal));
 
-            outfileAnimal << *animal1;
+            outfileAnimal << *animal;
             outfileAnimal.close();
 
             break;
@@ -511,9 +523,9 @@ void Manipulator::addAnimal()
             cout << "Ibama Authorization " << endl;
             cin >> ibamaAuth;
 
-            Animal *animal2 = new exoticReptile(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, isItPoisonous, poisonType, ibamaAuth, country);
-            animals.insert(std::pair<int, Animal *>(id, animal2));
-            outfileAnimal << *animal2;
+            Animal *animal = new exoticReptile(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, isItPoisonous, poisonType, ibamaAuth, country);
+            animals.insert(std::pair<int, Animal *>(id, animal));
+            outfileAnimal << *animal;
             outfileAnimal.close();
 
             //adiciona no map
@@ -557,12 +569,12 @@ void Manipulator::addAnimal()
             cout << "Ibama Authorization " << endl;
             cin >> ibamaAuth;
 
-            Animal *animal3 = new exoticBird(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, beakSize, handleSpan, ibamaAuth, country);
+            Animal *animal = new exoticBird(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, beakSize, handleSpan, ibamaAuth, country);
 
             //adiciona no map
-            animals.insert(std::pair<int, Animal *>(id, animal3));
+            animals.insert(std::pair<int, Animal *>(id, animal));
 
-            outfileAnimal << *animal3;
+            outfileAnimal << *animal;
             outfileAnimal.close();
 
             break;
@@ -602,10 +614,10 @@ void Manipulator::addAnimal()
             cout << "Ibama Authorization " << endl;
             cin >> ibamaAuth;
 
-            Animal *animal4 = new exoticMammal(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, furColor, ibamaAuth, country);
-            animals.insert(std::pair<int, Animal *>(id, animal4));
+            Animal *animal = new exoticMammal(id, aniClass, sciname, gender, size, diet, nickname, vet1, care1, furColor, ibamaAuth, country);
+            animals.insert(std::pair<int, Animal *>(id, animal));
 
-            outfileAnimal << *animal4;
+            outfileAnimal << *animal;
             outfileAnimal.close();
             break;
         }
@@ -643,37 +655,31 @@ void Manipulator::removeWorker()
     }
     else
     {
-        //Se o Worker for um veterinario ele vai atualizar o arquivo Veterinary.csv
-        if ((workers[id]->getFunction()).compare("veterinary") == 0)
-        {
+        workers.erase(id);
+        outfileWorker2.open("data/Workers.csv");
 
-            workers.erase(id);
-            outfileWorker2.open("data/Veterinary.csv");
-
-            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
-            {
-                if ((it->second->getFunction()).compare("veterinary") == 0)
-                {
-                    outfileWorker2 << *(it->second);
-                }
-            }
-            outfileWorker2.close();
-        }
-        //Se o Worker for um Caregiver ele vai atualizar o arquivo Caregiver.csv
-        else if ((workers[id]->getFunction()).compare("caregiver") == 0)
+        for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
         {
-            workers.erase(id);
-            outfileWorker2.open("data/Caregiver.csv");
-            for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
-            {
-                if ((it->second->getFunction()).compare("caregiver") == 0)
-                {
-                    outfileWorker2 << *(it->second);
-                }
-            }
-            outfileWorker2.close();
+                outfileWorker2 << *(it->second);
+        
         }
-    }
+        outfileWorker2.close();
+        }
+    //     //Se o Worker for um Caregiver ele vai atualizar o arquivo Caregiver.csv
+    //     else if ((workers[id]->getFunction()).compare("caregiver") == 0)
+    //     {
+    //         workers.erase(id);
+    //         outfileWorker2.open("data/Caregiver.csv");
+    //         for (map<int, Worker *>::iterator it = workers.begin(); it != workers.end(); it++)
+    //         {
+    //             if ((it->second->getFunction()).compare("caregiver") == 0)
+    //             {
+    //                 outfileWorker2 << *(it->second);
+    //             }
+    //         }
+    //         outfileWorker2.close();
+    //     }
+    // }
 }
 
 Veterinary *Manipulator::findWorkerVet(int id)
@@ -690,7 +696,7 @@ Veterinary *Manipulator::findWorkerVet(int id)
     }
     catch (...)
     {
-        cout << "Isso não é um Veterinario ou não existe.";
+        cout << "Isso não é um Veterinario ou não existe." << endl;
     }
 }
 
@@ -708,6 +714,6 @@ Caregiver *Manipulator::findWorkerCare(int id)
     }
     catch (...)
     {
-        cout << "Isso não é um Caregiver ou não existe.";
+        cout << "Isso não é um Caregiver ou não existe." << endl;
     }
 }
