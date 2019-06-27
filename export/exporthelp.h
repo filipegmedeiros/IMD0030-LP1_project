@@ -1,6 +1,6 @@
 #ifndef _EXP_HELP_H_
 #define _EXP_HELP_H_
-#pragma once
+
 
 #include <iostream>
 using namespace std;
@@ -40,7 +40,7 @@ namespace help {
     extern "C" void loadAnimals(map<int, Animal *> &animals);
     extern "C" const vector<string> separate(const string s, const char c);
 	extern "C" bool filtro(map<int, Worker*> &workers, map<int, Animal *> &animals, string tipo, string valor);
-	extern "C" exportarArquivo(map<int, Worker*> workers, map<int, Animal*> animals, string save_export);
+	extern "C" bool exportarArquivo(map<int, Worker*> workers, map<int, Animal*> animals, string save_export);
 
 }
 

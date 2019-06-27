@@ -21,10 +21,6 @@ CC = g++
 CFLAGS = -O0 -g -Wall -pedantic -std=c++11 -I$(INCDIR)
 RM = rm
 
-CC = g++
-CFLAGS = -O0 -g -Wall -pedantic -std=c++11 -I$(INCDIR)
-RM = rm
-
 HEADERS := $(wildcard $(INCDIR)/*)
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
@@ -53,7 +49,7 @@ OBJECTS_FILTRED := $(filter-out $(OBJS),$(OBJSPIC))
 export: runExport ##@Compilar Compila o programa export
 
 runExport: makelib
-	$(CC) $(CFLAGS) $(LIBDIR)/$(LIB) $(EXPORTDIR)/export.cpp $(EXPORTDIR)/main.cpp -o $(BINDIR)/$(PROGEXPORTED)
+	$(CC) $(CFLAGS) $(LIBDIR)/$(LIB) $(EXPORTDIR)/export.cpp $(EXPORTDIR)/exporthelp.h  $(EXPORTDIR)/exporthelp.cpp -o $(BINDIR)/$(PROGEXPORTED)
 
 makelib: petfera.so ##@Gera a Biblioteca Dincamica.
 
